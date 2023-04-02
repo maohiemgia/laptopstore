@@ -30,7 +30,10 @@ class CategoryController extends Controller
         if(preg_match("/api/",$request->url())){
             return $categories;
         }
+        // return view('admin.category.index', ['categories' => $categories]);
+        
         return view('admin.category.index', ['categories' => $categories]);
+
     }
     /**
      * Show the form for creating a new resource.
