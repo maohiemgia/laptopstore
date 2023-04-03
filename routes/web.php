@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('admin.dashboard');
-});
+})->middleware(['auth', 'verified', 'checkRole']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,11 +33,19 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::get('/categories', [CategoryController::class, 'index']);
-Route::get('/categories/create', [CategoryController::class, 'create']);
-Route::post('/categories/create/store', [CategoryController::class, 'store']);
-Route::get('/categories/{id}', [CategoryController::class, 'show']);
-Route::prefix('products')->group(function(){
+Route::middleware(['auth', 'verified', 'checkRole'])->prefix('/categories')->group(function () {
+    Route::get('', [CategoryController::class, 'index']);
+    Route::get('create', [CategoryController::class, 'create']);
+    Route::get('/{id}', [CategoryController::class, 'edit']);
+    Route::get('/sub/{id}', [SubCategoryController::class, 'edit']);
+    Route::post('store', [CategoryController::class, 'store']);
+    Route::put('/{id}', [CategoryController::class, 'update']);
+    Route::put('/sub/{id}', [SubCategoryController::class, 'update']);
+    Route::put('/{id}/restore', [CategoryController::class, 'restore']);
+});
+
+Route::middleware(['auth', 'verified', 'checkRole'])->prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'index']);
     Route::get('/create', [ProductController::class, 'create']);
+    Route::post('/store', [ProductController::class, 'store']);
 });

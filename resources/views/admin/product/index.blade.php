@@ -91,13 +91,13 @@
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
-                {{dd( session('success'))}}
+                {{ dd(session('success')) }}
             </div>
         @endif
 
         <h2>Danh sách sản phẩm &#127808;</h2>
         <div class="row mx-auto my-3 d-flex justify-content-between">
-            <a href="/categories/create" class="d-block btn btn-success text-white w-auto">&#43; Thêm mới</a>
+            <a href="/products/create" class="d-block btn btn-success text-white w-auto">&#43; Thêm mới</a>
         </div>
 
         <div class="table-responsive px-lg-5">
@@ -117,10 +117,15 @@
                         <tr>
                             <td>{{ ++$key }}</td>
                             <td class="text-success">{{ $product->name }}</td>
-                            <td class="text-muted"><img src='{{asset($product->image)}}' alt="" width="120px"></td>
+                            <td class="text-muted"><img src='{{ asset('/images/' . $product->image) }}' alt=""
+                                    width="120px"></td>
                             <td class="text-muted">{{ $product->description }}</td>
                             <td class="text-muted"><a href="">Các phiên bản</a></td>
-                            <td class="text-muted">{{ $product->description }}</td>
+                            <td class="text-muted">
+                                <button class="btn btn-info">
+                                    Xem chi tiết
+                                </button>
+                            </td>
                             {{-- <td class="bg-danger text-white w-25">
                                 <a href="/categories/{{ $category->id }}/soft-delete">
                                     Xóa
@@ -135,5 +140,5 @@
         <a href="/" class="d-inline-block btn btn-primary text-white w-auto mt-2 mb-3">&larr; Trang chủ</a>
     </div>
 
-    <script src="{{asset('js/product/index.js')}}"></script>
+    <script src="{{ asset('js/product/index.js') }}"></script>
 @endsection

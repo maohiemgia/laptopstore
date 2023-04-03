@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = Product::select('name', 'image', 'description')->get();
-        if(preg_match("/api/",$request->url())){
+        if (preg_match("/api/", $request->url())) {
             return $products;
         }
         return view('admin.product.index', compact('products'));
@@ -35,8 +36,22 @@ class ProductController extends Controller
         $product = new Product();
         $product->name = $request->name;
         $product->sub_category_id = $request->sub_category_id;
+        $product->image = $request->image;
         $product->description = $request->description;
         $result = $product->save();
+
+        // $validated = $request->validated();
+
+        // echo "<pre>";
+        // print_r($request->all());
+        // die;
+
+        // Product::create($request->all());
+        // $message = 'Tạo mới danh mục thành công.';
+
+        echo "<script>
+            location.href = '/';
+        </script>";
     }
 
     /**

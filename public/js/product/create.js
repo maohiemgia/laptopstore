@@ -28,8 +28,10 @@ categories.addEventListener('change', () => {
     return fetch('http://127.0.0.1:8000/api/categories/'+categories.value)
     .then((response) => response.json())
     .then((data) => {
-        console.log(data[0].sub);
-        data[0].sub.forEach(item => {
+        if (data.length == 0) {
+            return subCategories.innerHTML = '';
+        }
+        data.forEach(item => {
             subCategories.innerHTML += `
             <option value="" hidden></option>
             <option value="${item.id}">${item.name}</option>
@@ -43,11 +45,16 @@ submit.addEventListener('click', () => {
     let name = document.querySelector('#name');
     let subCategories = document.querySelector('#subCategories');
     let desc = document.querySelector('#desc');
+    let img = document.querySelector('#image');
+
     const data = {
         "name": name.value,
         "sub_category_id": subCategories.value,
-        "description": desc.value
+        "description": desc.value,
+        "image": img.files[0].name
     }
     postProduct(data)
+    
+    return location.href = '/products';
 })
 

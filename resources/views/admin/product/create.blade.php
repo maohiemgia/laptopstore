@@ -42,7 +42,10 @@
             </div>
         @endif
         <!-- Display a form to add a new category -->
-        <form action="/categories/create/store" class='row'>
+        <form action="{{ route('products.store') }}" class='row'>
+            {{-- @method('POST') --}}
+            @csrf
+
             <div class="form-group col-6">
                 <label for="id">Tên sản phẩm:</label>
                 <input type="text" id="name" class="form-control" value="{{ old('name') }}"
@@ -60,14 +63,13 @@
             </div>
             <div class="form-group col-6">
                 <label for="id">Ảnh sản phẩm:</label>
-                <input type="file" name="image" class="form-control" value="{{ old('name') }}"
+                <input type="file"  id="image" class="form-control" value="{{ old('name') }}"
                     placeholder="Ảnh sản phẩm" required>
             </div>
             <div class="form-group col-12">
                 <label for="id">Mô tả: </label>
                 <textarea id="desc" cols="30" rows="10" class="form-control">{{ old('name') }}</textarea>
             </div>
-            @csrf
             <button type="submit" id="submit" class="btn btn-danger my-3">Lưu</button>
         </form>
 

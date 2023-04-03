@@ -22,7 +22,7 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:categories|min:1|max:60|regex:/^[a-zA-Z0-9\s\p{L}]+$/u'
+            'name' => 'required|unique:categories|min:3|max:60|regex:/^[a-zA-Z0-9\s\p{L}]+$/u'
         ];
     }
 
@@ -36,6 +36,7 @@ class StoreCategoryRequest extends FormRequest
         return [
             'name.required' => 'Cần nhập tên danh mục.',
             'name.unique' => 'Tên danh mục đã tồn tại.',
+            'name.min' => 'Tên danh mục tối thiểu 3 ký tự.',
             'name.max' => 'Tên danh mục tối đa 60 ký tự.',
             'name.regex' => 'Tên danh mục chỉ chứa chữ cái hoặc số.',
         ];
