@@ -4,6 +4,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +19,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified', 'checkRole']);
+    return view('client.home');
+});
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('admin.dashboard');
+})->middleware(['auth', 'verified', 'checkRole'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -33,19 +34,34 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
+Route::middleware(['auth', 'verified', 'checkRole'])->prefix('/users')->group(function () {
+    Route::get('', [UserController::class, 'index']);
+    Route::get('{id}', [UserController::class, 'edit']);
+    Route::get('create', [UserController::class, 'create']);
+    Route::post('store', [UserController::class, 'store']);
+    Route::delete('{id}/delete', [UserController::class, 'destroy']);
+});
+
 Route::middleware(['auth', 'verified', 'checkRole'])->prefix('/categories')->group(function () {
     Route::get('', [CategoryController::class, 'index']);
     Route::get('create', [CategoryController::class, 'create']);
-    Route::get('/{id}', [CategoryController::class, 'edit']);
-    Route::get('/sub/{id}', [SubCategoryController::class, 'edit']);
     Route::post('store', [CategoryController::class, 'store']);
-    Route::put('/{id}', [CategoryController::class, 'update']);
-    Route::put('/sub/{id}', [SubCategoryController::class, 'update']);
-    Route::put('/{id}/restore', [CategoryController::class, 'restore']);
+    Route::get('{id}', [CategoryController::class, 'edit']);
+    Route::put('{id}', [CategoryController::class, 'update']);
+    Route::delete('{id}/delete', [CategoryController::class, 'destroy']);
+    Route::put('{id}/restore', [CategoryController::class, 'restore']);
+});
+
+Route::middleware(['auth', 'verified', 'checkRole'])->prefix('/subcategories')->group(function () {
+    Route::get('{id}', [SubCategoryController::class, 'edit']);
+    Route::put('{id}', [SubCategoryController::class, 'update']);
+    Route::delete('{id}/delete', [SubCategoryController::class, 'destroy']);
+    Route::put('{id}/restore', [SubCategoryController::class, 'restore']);
 });
 
 Route::middleware(['auth', 'verified', 'checkRole'])->prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'index']);
     Route::get('/create', [ProductController::class, 'create']);
     Route::post('/store', [ProductController::class, 'store']);
+    Route::get('/{id}', [ProductController::class, 'edit']);
 });

@@ -11,7 +11,7 @@
 
 {{-- content --}}
 @section('main-content')
-    <div class="container-fluid mt-5 px-2 px-lg-5">
+    <div class="container-fluid mt-5 px-2">
         <h2>Thêm mới danh mục &#127808;</h2>
         <div class="row mx-auto my-3 d-flex justify-content-between">
             <p class="w-auto">

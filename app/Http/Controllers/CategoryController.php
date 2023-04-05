@@ -33,6 +33,9 @@ class CategoryController extends Controller
         $subcategories = SubCategory::all();
 
         if (preg_match("/api/", $request->url())) {
+            // query to not soft delete records
+            $categories = Category::orderBy('name')->get();
+
             return $categories;
         }
 
@@ -70,7 +73,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $category = Category::find($category->id)->subcategories;
+        $category = Category::find($category->id)->subcategories()->withTrashed()->get();
 
         return $category;
     }
@@ -82,6 +85,10 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
+        if (is_null($category)) {
+            return redirect('/categories')->with('success', 'Danh mục đã bị xóa không thể chỉnh sửa');
+        }
+
         return view('admin.category.edit', compact('category'));
     }
 
@@ -92,7 +99,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->update($request->all());
-        $message = 'Cập nhật danh mục thành công.';
+        $message = 'Cập nhật danh mục thành công';
 
         return redirect('/categories')->with('success', $message);
     }
@@ -103,19 +110,15 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::find($id);
-        if ($category->delete()) {
-            return redirect('/categories')->with('success', 'Xóa thành công');
-        } else {
-            return redirect('/categories')->with('success', 'Xóa thất bại');
-        }
+        $category->delete();
+        
+        return redirect('/categories')->with('success', 'Xóa danh mục thành công');
     }
     public function restore($id)
     {
         $category = Category::withTrashed()->find($id);
         $category->restore();
 
-        $message = 'Khôi phục danh mục thành công.';
-
-        return redirect('/categories')->with('success', $message);
+        return redirect('/categories')->with('success', 'Khôi phục danh mục thành công');
     }
 }

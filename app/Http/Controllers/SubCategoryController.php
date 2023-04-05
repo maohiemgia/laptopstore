@@ -42,7 +42,7 @@ class SubCategoryController extends Controller
      */
     public function show(SubCategory $subCategory, Request $request, $id)
     {
-        $subCategories = SubCategory::where('category_id', $id)->select('id', 'name')->get();
+        $subCategories = SubCategory::where('category_id', $id)->select('id', 'name')->withTrashed()->get();
         if (preg_match("/api/", $request->url())) {
             return $subCategories;
         }
@@ -54,7 +54,7 @@ class SubCategoryController extends Controller
      */
     public function edit(SubCategory $subCategory, $id)
     {
-        $subcategory = SubCategory::find($id);
+        $subcategory = SubCategory::withTrashed()->find($id);
 
         return view('admin.category.edit', compact('subcategory'));
     }
@@ -64,7 +64,7 @@ class SubCategoryController extends Controller
      */
     public function update(StoreCategoryRequest $request, SubCategory $subCategory, $id)
     {
-        $category = SubCategory::find($id);
+        $category = SubCategory::withTrashed()->find($id);
         $category->update($request->all());
         $message = 'Cập nhật danh mục con thành công.';
 
@@ -80,5 +80,13 @@ class SubCategoryController extends Controller
         $category->delete();
 
         return redirect('/categories')->with('success', 'Xóa danh mục con thành công.');
+    }
+
+    public function restore($id)
+    {
+        $category = SubCategory::withTrashed()->find($id);
+        $category->restore();
+
+        return redirect('/categories')->with('success', 'Khôi phục danh mục con thành công');
     }
 }

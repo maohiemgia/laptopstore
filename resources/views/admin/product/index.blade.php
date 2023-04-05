@@ -51,41 +51,16 @@
         }
     </style>
 @endpush
-@push('before_scripts')
-    <script>
-        // When the user scrolls down Xpx from the top of the document, show the button
-        window.onscroll = function() {
-            scrollFunction()
-        };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                document.getElementById("myBtnUp").style.display = "block";
-            } else {
-                document.getElementById("myBtnUp").style.display = "none";
-            }
-            if (document.body.scrollTop > 1500 || document.documentElement.scrollTop > 1500) {
-                document.getElementById("myBtnDown").style.display = "none";
-            } else {
-                document.getElementById("myBtnDown").style.display = "block";
-            }
-
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-
-        function bottomFunction() {
-            document.documentElement.scrollTop = document.documentElement.scrollHeight;
-        }
-    </script>
-@endpush
 
 {{-- content --}}
 @section('main-content')
+    {{-- notification if success --}}
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="container-fluid mt-5 px-2 px-lg-5">
         {{-- notification if success --}}
         @if (session('success'))
@@ -117,7 +92,7 @@
                         <tr>
                             <td>{{ ++$key }}</td>
                             <td class="text-success">{{ $product->name }}</td>
-                            <td class="text-muted"><img src='{{ asset('/images/' . $product->image) }}' alt=""
+                            <td class="text-muted"><img src='{{ asset($product->image) }}' alt="product-image"
                                     width="120px"></td>
                             <td class="text-muted">{{ $product->description }}</td>
                             <td class="text-muted"><a href="">Các phiên bản</a></td>
@@ -125,6 +100,9 @@
                                 <button class="btn btn-info">
                                     Xem chi tiết
                                 </button>
+                                <a href="/products/{{ $product->id }}" class="btn btn-info">
+                                    Chỉnh sửa
+                                </a>
                             </td>
                             {{-- <td class="bg-danger text-white w-25">
                                 <a href="/categories/{{ $category->id }}/soft-delete">

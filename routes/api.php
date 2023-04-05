@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\UserController;
 use App\Models\Product;
 
 /*
@@ -21,6 +22,7 @@ use App\Models\Product;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::apiResource('/users', UserController::class);
 Route::apiResource('/products', ProductController::class);
 Route::apiResource('/categories', CategoryController::class);
 Route::apiResource('/subcategories', SubCategoryController::class);

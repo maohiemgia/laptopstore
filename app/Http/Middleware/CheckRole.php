@@ -16,7 +16,7 @@ class CheckRole
     public function handle(Request $request, Closure $next): Response
     {
         if ($request->user()->role !== 1) {
-            return redirect('login');
+            return redirect('/')->with('success', "Tài khoản admin mới sử dụng được chức năng đó.");
         }
 
         return $next($request);
