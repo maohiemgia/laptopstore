@@ -58,7 +58,7 @@
                     <select class="form-control text-capitalize" name="gender" id="selectParentCate">
                         <option disabled>Vui lòng chọn giới tính</option>
                         <option value="nam">nam</option>
-                        <option value="nữ" @if ($user->gender == 'nữ') selected  @endif>nữ</option>
+                        <option value="nữ" @if ($user->gender == 'nữ') selected @endif>nữ</option>
                     </select>
                 </div>
 

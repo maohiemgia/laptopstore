@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -36,9 +37,9 @@ require __DIR__ . '/auth.php';
 
 Route::middleware(['auth', 'verified', 'checkRole'])->prefix('/users')->group(function () {
     Route::get('', [UserController::class, 'index']);
-    Route::get('{id}', [UserController::class, 'edit']);
     Route::get('create', [UserController::class, 'create']);
     Route::post('store', [UserController::class, 'store']);
+    Route::get('{id}', [UserController::class, 'edit']);
     Route::delete('{id}/delete', [UserController::class, 'destroy']);
 });
 
@@ -64,4 +65,11 @@ Route::middleware(['auth', 'verified', 'checkRole'])->prefix('products')->group(
     Route::get('/create', [ProductController::class, 'create']);
     Route::post('/store', [ProductController::class, 'store']);
     Route::get('/{id}', [ProductController::class, 'edit']);
+});
+
+Route::prefix('/cart')->group(function () {
+    Route::get('', [ShoppingCartController::class, 'index']);
+    // Route::put('{id}', [ShoppingCartController::class, 'update']);
+    // Route::delete('{id}/delete', [ShoppingCartController::class, 'destroy']);
+    // Route::put('{id}/restore', [ShoppingCartController::class, 'restore']);
 });

@@ -12,7 +12,10 @@ class ShoppingCartController extends Controller
      */
     public function index()
     {
-        //
+        // join 3 tables
+        $cart = ShoppingCart::with('user', 'item.product')->get();
+
+        return view('client.cart.index', compact('cart'));
     }
 
     /**

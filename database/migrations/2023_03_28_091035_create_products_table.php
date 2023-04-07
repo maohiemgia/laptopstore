@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('image')->default('images/product_image_default.jpg')->nullable();
             $table->text('description')->nullable();
             $table->integer('sub_category_id')->nullable();
+            $table->integer('category_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

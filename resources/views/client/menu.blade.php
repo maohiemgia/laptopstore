@@ -37,7 +37,7 @@
                     {{ Auth::user()->name }}
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
+                    <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Quản lý tài khoản') }}</a>
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
@@ -45,7 +45,7 @@
                         <a class="dropdown-item" href="route('logout')"
                             onclick="event.preventDefault();
                                      this.closest('form').submit();">
-                            {{ __('Log Out') }}
+                            {{ __('Đăng xuất') }}
                         </a>
                     </form>
                 </div>
@@ -94,7 +94,7 @@
                 <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="/admin" class="nav-link">
+                    <a href="/dashboard" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p class="text-capitalize">
                             bảng điều khiển
@@ -111,13 +111,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/user" class="nav-link">
+                            <a href="/users" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p class="text-capitalize">Danh sách</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/user/create" class="nav-link">
+                            <a href="/users/create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p class="text-capitalize">tạo mới</p>
                             </a>
