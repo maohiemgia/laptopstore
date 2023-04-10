@@ -15,49 +15,49 @@ class BannersTableSeeder extends Seeder
     {
         DB::table('banners')->insert([
             [
-                'image' => 'banner1.jpg',
+                'image' => '/images/banner1.jpg',
                 'location' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'image' => 'banner2.jpg',
+                'image' => '/images/banner2.jpg',
                 'location' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'image' => 'banner3.jpg',
+                'image' => '/images/banner3.jpg',
                 'location' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'image' => 'banner4.jpg',
+                'image' => '/images/banner4.jpg',
                 'location' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'image' => 'banner5.jpg',
+                'image' => '/images/banner5.jpg',
                 'location' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'image' => 'banner6.jpg',
+                'image' => '/images/banner6.jpg',
                 'location' => 0,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'image' => 'banner7.jpg',
+                'image' => '/images/banner7.jpg',
                 'location' => 0,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'image' => 'banner8.jpg',
+                'image' => '/images/banner8.jpg',
                 'location' => 0,
                 'created_at' => now(),
                 'updated_at' => now()

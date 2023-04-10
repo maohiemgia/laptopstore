@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 {{-- page title --}}
-@section('page_title', 'Quản lý danh mục')
+@section('page_title', 'Quản lý sản phẩm')
 
 {{-- style --}}
 
@@ -54,19 +54,11 @@
 
 {{-- content --}}
 @section('main-content')
-    {{-- notification if success --}}
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-
     <div class="container-fluid mt-5 px-2 px-lg-5">
         {{-- notification if success --}}
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
-                {{ dd(session('success')) }}
             </div>
         @endif
 
@@ -75,45 +67,23 @@
             <a href="/products/create" class="d-block btn btn-success text-white w-auto">&#43; Thêm mới</a>
         </div>
 
-        <div class="table-responsive px-lg-5">
-            <table class="table table-striped table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Ảnh</th>
-                        <th>Mô tả</th>
-                        <th>Biến thể</th>
-                        <th>Hành động</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($products as $key => $product)
-                        <tr>
-                            <td>{{ ++$key }}</td>
-                            <td class="text-success">{{ $product->name }}</td>
-                            <td class="text-muted"><img src='{{ asset($product->image) }}' alt="product-image"
-                                    width="120px"></td>
-                            <td class="text-muted">{{ $product->description }}</td>
-                            <td class="text-muted"><a href="">Các phiên bản</a></td>
-                            <td class="text-muted">
-                                <button class="btn btn-info">
-                                    Xem chi tiết
-                                </button>
-                                <a href="/products/{{ $product->id }}" class="btn btn-info">
-                                    Chỉnh sửa
-                                </a>
-                            </td>
-                            {{-- <td class="bg-danger text-white w-25">
-                                <a href="/categories/{{ $category->id }}/soft-delete">
-                                    Xóa
-                                </a>
-                            </td> --}}
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+        <table class="table">
+            <thead>
+                <tr class=" text-center">
+                    <th  scope="col">STT</th>
+                    <th  scope="col">Tên sản phẩm</th>
+                    <th  scope="col">Ảnh</th>
+                    <th  scope="col">Mô tả</th>
+                    <th  scope="col">Biến thể</th>
+                    <th  scope="col" colspan="3">Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="tableshow">
+                
+            </tbody>
+          </table>
+
+            
 
         <a href="/" class="d-inline-block btn btn-primary text-white w-auto mt-2 mb-3">&larr; Trang chủ</a>
     </div>

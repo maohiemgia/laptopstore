@@ -31,7 +31,7 @@
             </div>
         @endif
         <!-- Display a form to add a new category -->
-        <form action="/users/store" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('user.createnewuser') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row mx-auto d-flex flex-wrap justify-content-start align-items-center">
                 <div class="form-group flex-fill mx-0 mx-lg-3">

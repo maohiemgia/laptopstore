@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 {{-- page title --}}
-@section('page_title', 'Tạo mới danh mục')
+@section('page_title', 'Tạo mới sản phẩm')
 
 {{-- style --}}
 
@@ -50,12 +50,13 @@
             </div>
             <div class="form-group col-6">
                 <label for="id">Tên danh mục</label>
-                <select id="category" class="form-control" value="{{ old('name') }}">
+                <select id="category" name="category_id" class="form-control" value="{{ old('name') }}">
                 </select>
             </div>
             <div class="form-group col-6">
                 <label for="id">Tên loại:</label>
                 <select id="subCategories" name="sub_category_id" class="form-control" value="{{ old('name') }}">
+                    
                 </select>
             </div>
             <div class="form-group col-6">
@@ -76,3 +77,4 @@
 
     <script src="{{ asset('js/product/create.js') }}"></script>
 @endsection
+

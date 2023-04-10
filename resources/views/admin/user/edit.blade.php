@@ -30,7 +30,7 @@
             </div>
         @endif
         <!-- Display a form to add a new category -->
-        <form action="/users/store" method="POST" enctype="multipart/form-data">
+        <form action="" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row mx-auto d-flex flex-wrap justify-content-between">
                 <div class="form-group">

@@ -35,11 +35,11 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUserRequest $request)
+    public function store(Request $request)
     {
         //    // The incoming request is valid then...
         // // Retrieve the validated input data...
-        $validated = $request->validated();
+        // $validated = $request->validated();
 
         $user = $request->all();
 

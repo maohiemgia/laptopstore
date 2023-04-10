@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Quản Lý Website - @yield('page-title')</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -28,6 +29,8 @@
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 
     {{-- style css  --}}
     @yield('style')

@@ -15,37 +15,37 @@ class ProductGalleriesTableSeeder extends Seeder
     {
         DB::table('product_galleries')->insert([
             [
-                'image' => 'legion1a.png', 
+                'image' => '/images/legion1a.png', 
                 'product_id' => 5, 
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'image' => 'legion1b.png', 
+                'image' => '/images/legion1b.png', 
                 'product_id' => 5, 
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'image' => 'legion1c.png', 
+                'image' => '/images/legion1c.png', 
                 'product_id' => 5,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'image' => 'legion1d.png', 
+                'image' => '/images/legion1d.png', 
                 'product_id' => 5, 
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'image' => 'legion1e.png', 
+                'image' => '/images/legion1e.png', 
                 'product_id' => 5, 
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'image' => 'legion1f.png', 
+                'image' => '/images/legion1f.png', 
                 'product_id' => 5, 
                 'created_at' => now(),
                 'updated_at' => now()

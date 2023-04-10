@@ -1,821 +1,253 @@
 @extends('client.master')
 
-{{-- page title --}}
-@section('page-title', 'Laptop TT')
-
-{{-- style --}}
 @section('style')
+    <style>
+        .owl-nav {
+            display: none;
+        }
+    </style>
 @endsection
 
 {{-- content --}}
 @section('main-content')
-    <!--welcome-hero start -->
-    <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-        <!--/.carousel-indicator -->
-        <ol class="carousel-indicators">
-            <li data-target="#header-carousel" data-slide-to="0" class="active"><span class="small-circle"></span></li>
-            <li data-target="#header-carousel" data-slide-to="1"><span class="small-circle"></span></li>
-            <li data-target="#header-carousel" data-slide-to="2"><span class="small-circle"></span></li>
-        </ol><!-- /ol-->
-        <!--/.carousel-indicator -->
-
-        <!--/.carousel-inner -->
-        <div class="carousel-inner" role="listbox">
-            <!-- .item -->
-            <div class="item active">
-                <div class="single-slide-item slide1">
-                    <div class="container">
-                        <div class="welcome-hero-content">
-                            <div class="row">
-                                <div class="col-sm-7">
-                                    <div class="single-welcome-hero">
-                                        <div class="welcome-hero-txt">
-                                            <h4>great design collection</h4>
-                                            <h2>cloth covered accent chair</h2>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiuiana
-                                                smod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                                nostrud exercitation ullamco laboris nisi ut aliquip.
-                                            </p>
-                                            <div class="packages-price">
-                                                <p>
-                                                    $ 399.00
-                                                    <del>$ 499.00</del>
-                                                </p>
-                                            </div>
-                                            <button class="btn-cart welcome-add-cart" onclick="window.location.href='#'">
-                                                <span class="lnr lnr-plus-circle"></span>
-                                                add <span>to</span> cart
-                                            </button>
-                                            <button class="btn-cart welcome-add-cart welcome-more-info"
-                                                onclick="window.location.href='#'">
-                                                more info
-                                            </button>
-                                        </div>
-                                        <!--/.welcome-hero-txt-->
-                                    </div>
-                                    <!--/.single-welcome-hero-->
-                                </div>
-                                <!--/.col-->
-                                <div class="col-sm-5">
-                                    <div class="single-welcome-hero">
-                                        <div class="welcome-hero-img">
-                                            <img src="images/yoga1.png" alt="slider image">
-                                        </div>
-                                        <!--/.welcome-hero-txt-->
-                                    </div>
-                                    <!--/.single-welcome-hero-->
-                                </div>
-                                <!--/.col-->
-                            </div>
-                            <!--/.row-->
-                        </div>
-                        <!--/.welcome-hero-content-->
-                    </div><!-- /.container-->
-                </div><!-- /.single-slide-item-->
-
-            </div><!-- /.item .active-->
-
-            <div class="item">
-                <div class="single-slide-item slide2">
-                    <div class="container">
-                        <div class="welcome-hero-content">
-                            <div class="row">
-                                <div class="col-sm-7">
-                                    <div class="single-welcome-hero">
-                                        <div class="welcome-hero-txt">
-                                            <h4>great design collection</h4>
-                                            <h2>mapple wood accent chair</h2>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiuiana
-                                                smod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                                nostrud exercitation ullamco laboris nisi ut aliquip.
-                                            </p>
-                                            <div class="packages-price">
-                                                <p>
-                                                    $ 199.00
-                                                    <del>$ 299.00</del>
-                                                </p>
-                                            </div>
-                                            <button class="btn-cart welcome-add-cart" onclick="window.location.href='#'">
-                                                <span class="lnr lnr-plus-circle"></span>
-                                                add <span>to</span> cart
-                                            </button>
-                                            <button class="btn-cart welcome-add-cart welcome-more-info"
-                                                onclick="window.location.href='#'">
-                                                more info
-                                            </button>
-                                        </div>
-                                        <!--/.welcome-hero-txt-->
-                                    </div>
-                                    <!--/.single-welcome-hero-->
-                                </div>
-                                <!--/.col-->
-                                <div class="col-sm-5">
-                                    <div class="single-welcome-hero">
-                                        <div class="welcome-hero-img">
-                                            <img src="images/legion1c.png" alt="slider image">
-                                        </div>
-                                        <!--/.welcome-hero-txt-->
-                                    </div>
-                                    <!--/.single-welcome-hero-->
-                                </div>
-                                <!--/.col-->
-                            </div>
-                            <!--/.row-->
-                        </div>
-                        <!--/.welcome-hero-content-->
-                    </div><!-- /.container-->
-                </div><!-- /.single-slide-item-->
-
-            </div><!-- /.item .active-->
-
-            <div class="item">
-                <div class="single-slide-item slide3">
-                    <div class="container">
-                        <div class="welcome-hero-content">
-                            <div class="row">
-                                <div class="col-sm-7">
-                                    <div class="single-welcome-hero">
-                                        <div class="welcome-hero-txt">
-                                            <h4>great design collection</h4>
-                                            <h2>valvet accent arm chair</h2>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiuiana
-                                                smod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                                nostrud exercitation ullamco laboris nisi ut aliquip.
-                                            </p>
-                                            <div class="packages-price">
-                                                <p>
-                                                    $ 299.00
-                                                    <del>$ 399.00</del>
-                                                </p>
-                                            </div>
-                                            <button class="btn-cart welcome-add-cart" onclick="window.location.href='#'">
-                                                <span class="lnr lnr-plus-circle"></span>
-                                                add <span>to</span> cart
-                                            </button>
-                                            <button class="btn-cart welcome-add-cart welcome-more-info"
-                                                onclick="window.location.href='#'">
-                                                more info
-                                            </button>
-                                        </div>
-                                        <!--/.welcome-hero-txt-->
-                                    </div>
-                                    <!--/.single-welcome-hero-->
-                                </div>
-                                <!--/.col-->
-                                <div class="col-sm-5">
-                                    <div class="single-welcome-hero">
-                                        <div class="welcome-hero-img">
-                                            <img src="images/ideapad1.png" alt="slider image">
-                                        </div>
-                                        <!--/.welcome-hero-txt-->
-                                    </div>
-                                    <!--/.single-welcome-hero-->
-                                </div>
-                                <!--/.col-->
-                            </div>
-                            <!--/.row-->
-                        </div>
-                        <!--/.welcome-hero-content-->
-                    </div><!-- /.container-->
-                </div><!-- /.single-slide-item-->
-
-            </div><!-- /.item .active-->
-        </div><!-- /.carousel-inner-->
-
-    </div>
-    <!--/#header-carousel-->
-
-    <!--welcome-hero end -->
-
-    <!--populer-products start -->
-    <section id="populer-products" class="populer-products">
+    <!-- banner part start-->
+    <section class="banner_part">
         <div class="container">
-            <div class="populer-products-content">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="single-populer-products">
-                            <div class="single-populer-product-img mt40">
-                                <img src="assets/images/populer-products/p1.png" alt="populer-products images">
+            <div class="row mx-auto align-items-center">
+                <div class="col-lg-12">
+                    <div class="banner_slider owl-carousel">
+                        @foreach ($headerbanners as $headerbanner)
+                            <div class="single_banner_slider">
+                                <div class="row mx-auto">
+                                    <img src="{{ asset($headerbanner->image) }}" alt="banner">
+                                </div>
                             </div>
-                            <h2><a href="#">arm chair</a></h2>
-                            <div class="single-populer-products-para">
-                                <p>Nemo enim ipsam voluptatem quia volu ptas sit asperna aut odit aut fugit.</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
-                    <div class="col-md-6">
-                        <div class="single-populer-products">
-                            <div class="single-inner-populer-products">
-                                <div class="row">
-                                    <div class="col-md-4 col-sm-12">
-                                        <div class="single-inner-populer-product-img">
-                                            <img src="assets/images/populer-products/p2.png" alt="populer-products images">
-                                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- banner part start-->
+
+    <!-- feature_part start-->
+    <section class="feature_part padding_top">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section_tittle text-center text-capitalize">
+                        <h2>Sản phẩm nổi bật</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-between">
+                @foreach ($featureproducts as $index => $item)
+                    @if ($index % 2 == 0)
+                        <div class="col-lg-7 col-sm-6">
+                        @else
+                            <div class="col-lg-5 col-sm-6">
+                    @endif
+                    <div class="single_feature_post_text"
+                        onclick="location.href='/product-detail/{{ $item->product->id }}'">
+                        <p>Premium Quality</p>
+                        <h3 class="bg-light text-wrap position-absolute" style="z-index: 3;">{{ $item->product->name }}</h3>
+                        <a href="#" class="feature_btn text-uppercase">Xem ngay <i class="fas fa-play"></i></a>
+                        <img src="{{ asset($item->product->image) }}" alt="product">
+                    </div>
+            </div>
+            @endforeach
+        </div>
+        </div>
+    </section>
+    <!-- upcoming_event part start-->
+
+    <!-- product_list start-->
+    <section class="product_list section_padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="section_tittle text-center d-flex justify-content-between align-items-start">
+                        <h2 class="text-capitalize m-0">Sản phẩm mới</h2>
+                        <a href="/product-list" class="d-block btn btn-outline-secondary">
+                            Xem thêm >>>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row mx-auto align-items-center justify-content-between">
+                        @foreach ($newproducts as $product)
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="single_product_item">
+                                    <img src="{{ asset($product->image) }}"
+                                        onclick="location.href='/product-detail/{{ $product->id }}'" alt="product">
+                                    <div class="single_product_text">
+                                        <h4 class="overflow-x-auto">{{ $product->name }}</h4>
+                                        {{-- <h3>{{ $product->productoptions->first()->price }}đ</h3> --}}
+                                        <a href="#" class="add_cart">+ Thêm vào giỏ</a>
                                     </div>
-                                    <div class="col-md-8 col-sm-12">
-                                        <div class="single-inner-populer-product-txt">
-                                            <h2>
-                                                <a href="#">
-                                                    latest designed stool <span>and</span> chair
-                                                </a>
-                                            </h2>
-                                            <p>
-                                                Edi ut perspiciatis unde omnis iste natusina error sit voluptatem
-                                                accusantium doloret mque laudantium, totam rem aperiam.
-                                            </p>
-                                            <div class="populer-products-price">
-                                                <h4>Sales Start from <span>$99.00</span></h4>
-                                            </div>
-                                            <button class="btn-cart welcome-add-cart populer-products-btn"
-                                                onclick="window.location.href='#'">
-                                                discover more
-                                            </button>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="single-populer-products">
-                            <div class="single-populer-products">
-                                <div class="single-populer-product-img">
-                                    <img src="assets/images/populer-products/p3.png" alt="populer-products images">
-                                </div>
-                                <h2><a href="#">hanging lamp</a></h2>
-                                <div class="single-populer-products-para">
-                                    <p>Nemo enim ipsam voluptatem quia volu ptas sit asperna aut odit aut fugit.</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-        <!--/.container-->
-
     </section>
-    <!--/.populer-products-->
-    <!--populer-products end-->
+    <!-- product_list part start-->
 
-    <!--new-arrivals start -->
-    <section id="new-arrivals" class="new-arrivals">
+    <!-- awesome_shop start-->
+    {{-- <section class="our_offer section_padding">
         <div class="container">
-            <div class="section-header">
-                <h2>new arrivals</h2>
-            </div>
-            <!--/.section-header-->
-            <div class="new-arrivals-content">
-                <div class="row">
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="assets/images/collection/arrivals1.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="sale bg-1">
-                                    <p>sale</p>
-                                </div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <h4><a href="#">wooden chair</a></h4>
-                            <p class="arrival-product-price">$65.00</p>
-                        </div>
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-6 col-md-6">
+                    <div class="offer_img">
+                        <img src="img/offer_img.png" alt="">
                     </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="assets/images/collection/arrivals2.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="sale bg-2">
-                                    <p>sale</p>
-                                </div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="offer_text">
+                        <h2>Weekly Sale on
+                            60% Off All Products</h2>
+                        <div class="date_countdown">
+                            <div id="timer">
+                                <div id="days" class="date"></div>
+                                <div id="hours" class="date"></div>
+                                <div id="minutes" class="date"></div>
+                                <div id="seconds" class="date"></div>
                             </div>
-                            <h4><a href="#">single armchair</a></h4>
-                            <p class="arrival-product-price">$80.00</p>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="assets/images/collection/arrivals3.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="enter email address"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <a href="#" class="input-group-text btn_2" id="basic-addon2">book now</a>
                             </div>
-                            <h4><a href="#">wooden armchair</a></h4>
-                            <p class="arrival-product-price">$40.00</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="assets/images/collection/arrivals4.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="sale bg-1">
-                                    <p>sale</p>
-                                </div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <h4><a href="#">stylish chair</a></h4>
-                            <p class="arrival-product-price">$100.00</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="assets/images/collection/arrivals5.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <h4><a href="#">modern chair</a></h4>
-                            <p class="arrival-product-price">$120.00</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="assets/images/collection/arrivals6.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="sale bg-1">
-                                    <p>sale</p>
-                                </div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <h4><a href="#">mapple wood dinning table</a></h4>
-                            <p class="arrival-product-price">$140.00</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="assets/images/collection/arrivals7.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="sale bg-2">
-                                    <p>sale</p>
-                                </div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <h4><a href="#">arm chair</a></h4>
-                            <p class="arrival-product-price">$90.00</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="assets/images/collection/arrivals8.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <h4><a href="#">wooden bed</a></h4>
-                            <p class="arrival-product-price">$140.00</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--/.container-->
+    </section> --}}
+    <!-- awesome_shop part start-->
 
-    </section>
-    <!--/.new-arrivals-->
-    <!--new-arrivals end -->
-
-    <!--sofa-collection start -->
-    <section id="sofa-collection">
-        <div class="owl-carousel owl-theme" id="collection-carousel">
-            <div class="sofa-collection collectionbg1">
-                <div class="container">
-                    <div class="sofa-collection-txt">
-                        <h2>unlimited sofa collection</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                        <div class="sofa-collection-price">
-                            <h4>strting from <span>$ 199</span></h4>
-                        </div>
-                        <button class="btn-cart welcome-add-cart sofa-collection-btn" onclick="window.location.href='#'">
-                            view more
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!--/.sofa-collection-->
-            <div class="sofa-collection collectionbg2">
-                <div class="container">
-                    <div class="sofa-collection-txt">
-                        <h2>unlimited dainning table collection</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                        <div class="sofa-collection-price">
-                            <h4>strting from <span>$ 299</span></h4>
-                        </div>
-                        <button class="btn-cart welcome-add-cart sofa-collection-btn" onclick="window.location.href='#'">
-                            view more
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!--/.sofa-collection-->
-        </div>
-        <!--/.collection-carousel-->
-
-    </section>
-    <!--/.sofa-collection-->
-    <!--sofa-collection end -->
-
-    <!--feature start -->
-    <section id="feature" class="feature">
+    <!-- product_list part start-->
+    {{-- <section class="product_list best_seller section_padding">
         <div class="container">
-            <div class="section-header">
-                <h2>featured products</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="section_tittle text-center">
+                        <h2>Best Sellers <span>shop</span></h2>
+                    </div>
+                </div>
             </div>
-            <!--/.section-header-->
-            <div class="feature-content">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="single-feature">
-                            <img src="assets/images/features/f1.jpg" alt="feature image">
-                            <div class="single-feature-txt text-center">
-                                <p>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span class="spacial-feature-icon"><i class="fa fa-star"></i></span>
-                                    <span class="feature-review">(45 review)</span>
-                                </p>
-                                <h3><a href="#">designed sofa</a></h3>
-                                <h5>$160.00</h5>
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-12">
+                    <div class="best_product_slider owl-carousel">
+                        <div class="single_product_item">
+                            <img src="img/product/product_1.png" alt="">
+                            <div class="single_product_text">
+                                <h4>Quartz Belt Watch</h4>
+                                <h3>$150.00</h3>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="single-feature">
-                            <img src="assets/images/features/f2.jpg" alt="feature image">
-                            <div class="single-feature-txt text-center">
-                                <p>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span class="spacial-feature-icon"><i class="fa fa-star"></i></span>
-                                    <span class="feature-review">(45 review)</span>
-                                </p>
-                                <h3><a href="#">dinning table </a></h3>
-                                <h5>$200.00</h5>
+                        <div class="single_product_item">
+                            <img src="img/product/product_2.png" alt="">
+                            <div class="single_product_text">
+                                <h4>Quartz Belt Watch</h4>
+                                <h3>$150.00</h3>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="single-feature">
-                            <img src="assets/images/features/f3.jpg" alt="feature image">
-                            <div class="single-feature-txt text-center">
-                                <p>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span class="spacial-feature-icon"><i class="fa fa-star"></i></span>
-                                    <span class="feature-review">(45 review)</span>
-                                </p>
-                                <h3><a href="#">chair and table</a></h3>
-                                <h5>$100.00</h5>
+                        <div class="single_product_item">
+                            <img src="img/product/product_3.png" alt="">
+                            <div class="single_product_text">
+                                <h4>Quartz Belt Watch</h4>
+                                <h3>$150.00</h3>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="single-feature">
-                            <img src="assets/images/features/f4.jpg" alt="feature image">
-                            <div class="single-feature-txt text-center">
-                                <p>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span class="spacial-feature-icon"><i class="fa fa-star"></i></span>
-                                    <span class="feature-review">(45 review)</span>
-                                </p>
-                                <h3><a href="#">modern arm chair</a></h3>
-                                <h5>$299.00</h5>
+                        <div class="single_product_item">
+                            <img src="img/product/product_4.png" alt="">
+                            <div class="single_product_text">
+                                <h4>Quartz Belt Watch</h4>
+                                <h3>$150.00</h3>
+                            </div>
+                        </div>
+                        <div class="single_product_item">
+                            <img src="img/product/product_5.png" alt="">
+                            <div class="single_product_text">
+                                <h4>Quartz Belt Watch</h4>
+                                <h3>$150.00</h3>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--/.container-->
+    </section> --}}
+    <!-- product_list part end-->
 
-    </section>
-    <!--/.feature-->
-    <!--feature end -->
-
-    <!--blog start -->
-    <section id="blog" class="blog">
+    <!-- subscribe_area part start-->
+    {{-- <section class="subscribe_area section_padding">
         <div class="container">
-            <div class="section-header">
-                <h2>latest blog</h2>
-            </div>
-            <!--/.section-header-->
-            <div class="blog-content">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="single-blog">
-                            <div class="single-blog-img">
-                                <img src="assets/images/blog/b1.jpg" alt="blog image">
-                                <div class="single-blog-img-overlay"></div>
-                            </div>
-                            <div class="single-blog-txt">
-                                <h2><a href="#">Why Brands are Looking at Local Language</a></h2>
-                                <h3>By <a href="#">Robert Norby</a> / 18th March 2018</h3>
-                                <p>
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt....
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="single-blog">
-                            <div class="single-blog-img">
-                                <img src="assets/images/blog/b2.jpg" alt="blog image">
-                                <div class="single-blog-img-overlay"></div>
-                            </div>
-                            <div class="single-blog-txt">
-                                <h2><a href="#">Why Brands are Looking at Local Language</a></h2>
-                                <h3>By <a href="#">Robert Norby</a> / 18th March 2018</h3>
-                                <p>
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt....
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="single-blog">
-                            <div class="single-blog-img">
-                                <img src="assets/images/blog/b3.jpg" alt="blog image">
-                                <div class="single-blog-img-overlay"></div>
-                            </div>
-                            <div class="single-blog-txt">
-                                <h2><a href="#">Why Brands are Looking at Local Language</a></h2>
-                                <h3>By <a href="#">Robert Norby</a> / 18th March 2018</h3>
-                                <p>
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt....
-                                </p>
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="subscribe_area_text text-center">
+                        <h5>Join Our Newsletter</h5>
+                        <h2>Subscribe to get Updated
+                            with new offers</h2>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="enter email address"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <a href="#" class="input-group-text btn_2" id="basic-addon2">subscribe now</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--/.container-->
+    </section> --}}
+    <!--::subscribe_area part end::-->
 
-    </section>
-    <!--/.blog-->
-    <!--blog end -->
-
-    <!-- clients strat -->
-    <section id="clients" class="clients">
+    <!-- subscribe_area part start-->
+    {{-- <section class="client_logo padding_top">
         <div class="container">
-            <div class="owl-carousel owl-theme" id="client">
-                <div class="item">
-                    <a href="#">
-                        <img src="assets/images/clients/c1.png" alt="brand-image" />
-                    </a>
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="single_client_logo">
+                        <img src="img/client_logo/client_logo_1.png" alt="">
+                    </div>
+                    <div class="single_client_logo">
+                        <img src="img/client_logo/client_logo_2.png" alt="">
+                    </div>
+                    <div class="single_client_logo">
+                        <img src="img/client_logo/client_logo_3.png" alt="">
+                    </div>
+                    <div class="single_client_logo">
+                        <img src="img/client_logo/client_logo_4.png" alt="">
+                    </div>
+                    <div class="single_client_logo">
+                        <img src="img/client_logo/client_logo_5.png" alt="">
+                    </div>
+                    <div class="single_client_logo">
+                        <img src="img/client_logo/client_logo_3.png" alt="">
+                    </div>
+                    <div class="single_client_logo">
+                        <img src="img/client_logo/client_logo_1.png" alt="">
+                    </div>
+                    <div class="single_client_logo">
+                        <img src="img/client_logo/client_logo_2.png" alt="">
+                    </div>
+                    <div class="single_client_logo">
+                        <img src="img/client_logo/client_logo_3.png" alt="">
+                    </div>
+                    <div class="single_client_logo">
+                        <img src="img/client_logo/client_logo_4.png" alt="">
+                    </div>
                 </div>
-                <!--/.item-->
-                <div class="item">
-                    <a href="#">
-                        <img src="assets/images/clients/c2.png" alt="brand-image" />
-                    </a>
-                </div>
-                <!--/.item-->
-                <div class="item">
-                    <a href="#">
-                        <img src="assets/images/clients/c3.png" alt="brand-image" />
-                    </a>
-                </div>
-                <!--/.item-->
-                <div class="item">
-                    <a href="#">
-                        <img src="assets/images/clients/c4.png" alt="brand-image" />
-                    </a>
-                </div>
-                <!--/.item-->
-                <div class="item">
-                    <a href="#">
-                        <img src="assets/images/clients/c5.png" alt="brand-image" />
-                    </a>
-                </div>
-                <!--/.item-->
             </div>
-            <!--/.owl-carousel-->
-
         </div>
-        <!--/.container-->
-
-    </section>
-    <!--/.clients-->
-    <!-- clients end -->
-
-    <!--newsletter strat -->
-    <section id="newsletter" class="newsletter">
-        <div class="container">
-            <div class="hm-footer-details">
-                <div class="row">
-                    <div class=" col-md-3 col-sm-6 col-xs-12">
-                        <div class="hm-footer-widget">
-                            <div class="hm-foot-title">
-                                <h4>information</h4>
-                            </div>
-                            <!--/.hm-foot-title-->
-                            <div class="hm-foot-menu">
-                                <ul>
-                                    <li><a href="#">about us</a></li>
-                                    <!--/li-->
-                                    <li><a href="#">contact us</a></li>
-                                    <!--/li-->
-                                    <li><a href="#">news</a></li>
-                                    <!--/li-->
-                                    <li><a href="#">store</a></li>
-                                    <!--/li-->
-                                </ul>
-                                <!--/ul-->
-                            </div>
-                            <!--/.hm-foot-menu-->
-                        </div>
-                        <!--/.hm-footer-widget-->
-                    </div>
-                    <!--/.col-->
-                    <div class=" col-md-3 col-sm-6 col-xs-12">
-                        <div class="hm-footer-widget">
-                            <div class="hm-foot-title">
-                                <h4>collections</h4>
-                            </div>
-                            <!--/.hm-foot-title-->
-                            <div class="hm-foot-menu">
-                                <ul>
-                                    <li><a href="#">wooden chair</a></li>
-                                    <!--/li-->
-                                    <li><a href="#">royal cloth sofa</a></li>
-                                    <!--/li-->
-                                    <li><a href="#">accent chair</a></li>
-                                    <!--/li-->
-                                    <li><a href="#">bed</a></li>
-                                    <!--/li-->
-                                    <li><a href="#">hanging lamp</a></li>
-                                    <!--/li-->
-                                </ul>
-                                <!--/ul-->
-                            </div>
-                            <!--/.hm-foot-menu-->
-                        </div>
-                        <!--/.hm-footer-widget-->
-                    </div>
-                    <!--/.col-->
-                    <div class=" col-md-3 col-sm-6 col-xs-12">
-                        <div class="hm-footer-widget">
-                            <div class="hm-foot-title">
-                                <h4>my accounts</h4>
-                            </div>
-                            <!--/.hm-foot-title-->
-                            <div class="hm-foot-menu">
-                                <ul>
-                                    <li><a href="#">my account</a></li>
-                                    <!--/li-->
-                                    <li><a href="#">wishlist</a></li>
-                                    <!--/li-->
-                                    <li><a href="#">Community</a></li>
-                                    <!--/li-->
-                                    <li><a href="#">order history</a></li>
-                                    <!--/li-->
-                                    <li><a href="#">my cart</a></li>
-                                    <!--/li-->
-                                </ul>
-                                <!--/ul-->
-                            </div>
-                            <!--/.hm-foot-menu-->
-                        </div>
-                        <!--/.hm-footer-widget-->
-                    </div>
-                    <!--/.col-->
-                    <div class=" col-md-3 col-sm-6  col-xs-12">
-                        <div class="hm-footer-widget">
-                            <div class="hm-foot-title">
-                                <h4>newsletter</h4>
-                            </div>
-                            <!--/.hm-foot-title-->
-                            <div class="hm-foot-para">
-                                <p>
-                                    Subscribe to get latest news,update and information.
-                                </p>
-                            </div>
-                            <!--/.hm-foot-para-->
-                            <div class="hm-foot-email">
-                                <div class="foot-email-box">
-                                    <input type="text" class="form-control" placeholder="Enter Email Here....">
-                                </div>
-                                <!--/.foot-email-box-->
-                                <div class="foot-email-subscribe">
-                                    <span><i class="fa fa-location-arrow"></i></span>
-                                </div>
-                                <!--/.foot-email-icon-->
-                            </div>
-                            <!--/.hm-foot-email-->
-                        </div>
-                        <!--/.hm-footer-widget-->
-                    </div>
-                    <!--/.col-->
-                </div>
-                <!--/.row-->
-            </div>
-            <!--/.hm-footer-details-->
-
-        </div>
-        <!--/.container-->
-
-    </section>
-    <!--/newsletter-->
-    <!--newsletter end -->
+    </section> --}}
+    <!--::subscribe_area part end::-->
 @endsection
