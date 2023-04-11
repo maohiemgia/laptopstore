@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 {{-- page title --}}
-@section('page_title', 'Tạo mới danh mục')
+@section('page_title', 'Tạo mới sản phẩm')
 
 {{-- style --}}
 
@@ -30,7 +30,6 @@
             </p>
             <a href="/products/create" class="d-block btn btn-success text-white w-auto">Làm mới</a>
         </div>
-
         <!-- Display any validation errors -->
         @if ($errors->any())
             <div class="alert bg-danger text-white">
@@ -42,38 +41,40 @@
             </div>
         @endif
         <!-- Display a form to add a new category -->
-        <form action="/categories/create/store" class='row'>
+        <form action="{{ route('products.store') }}" method="POST" class='row' enctype="multipart/form-data">
+            @csrf
             <div class="form-group col-6">
                 <label for="id">Tên sản phẩm:</label>
-                <input type="text" id="name" class="form-control" value="{{ old('name') }}"
-                    placeholder="Tên sản phẩm" required>
+                <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}"
+                    placeholder="Tên sản phẩm">
             </div>
             <div class="form-group col-6">
                 <label for="id">Tên danh mục</label>
-                <select id="category" class="form-control" value="{{ old('name') }}">
+                <select id="category" name="category_id" class="form-control" value="{{ old('name') }}">
                 </select>
             </div>
             <div class="form-group col-6">
                 <label for="id">Tên loại:</label>
-                <select id="subCategories" class="form-control" value="{{ old('name') }}">
+                <select id="subCategories" name="sub_category_id" class="form-control" value="{{ old('name') }}">
+                    
                 </select>
             </div>
             <div class="form-group col-6">
                 <label for="id">Ảnh sản phẩm:</label>
-                <input type="file" name="image" class="form-control" value="{{ old('name') }}"
-                    placeholder="Ảnh sản phẩm" required>
+                <input type="file" id="image" name="image" class="form-control" value="{{ old('name') }}"
+                    placeholder="Ảnh sản phẩm" accept="image/*">
             </div>
             <div class="form-group col-12">
                 <label for="id">Mô tả: </label>
-                <textarea id="desc" cols="30" rows="10" class="form-control">{{ old('name') }}</textarea>
+                <textarea id="desc" name="description" cols="30" rows="10" class="form-control">{{ old('name') }}</textarea>
             </div>
-            @csrf
-            <button type="submit" id="submit" class="btn btn-danger my-3">Lưu</button>
+            <button id="submit" class="btn btn-danger my-3">Lưu</button>
         </form>
 
 
         <a href="/products" class="d-inline-block btn btn-primary text-white w-auto mt-4 mb-3">&larr; Quản lý sản phẩm</a>
     </div>
 
-    <script src="{{asset('js/product/create.js')}}"></script>
+    <script src="{{ asset('js/product/create.js') }}"></script>
 @endsection
+

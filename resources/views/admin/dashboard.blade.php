@@ -93,7 +93,7 @@
                                         <th>Order ID</th>
                                         <th>Item</th>
                                         <th>Status</th>
-                                        <th>Popularity</th>
+                                        <th>Solded</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -103,7 +103,7 @@
                                         <td><span class="badge badge-success">Shipped</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                90,80,90,-70,61,-83,63</div>
+                                               54</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -112,7 +112,7 @@
                                         <td><span class="badge badge-warning">Pending</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                                90,80,-90,70,61,-83,68</div>
+                                               54</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -121,7 +121,7 @@
                                         <td><span class="badge badge-danger">Delivered</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                90,-80,90,70,-61,83,63</div>
+                                               54</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -130,7 +130,7 @@
                                         <td><span class="badge badge-info">Processing</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#00c0ef" data-height="20">
-                                                90,80,-90,70,-61,83,63</div>
+                                               54</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -139,7 +139,7 @@
                                         <td><span class="badge badge-warning">Pending</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                                90,80,-90,70,61,-83,68</div>
+                                               54</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -148,7 +148,7 @@
                                         <td><span class="badge badge-danger">Delivered</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                90,-80,90,70,-61,83,63</div>
+                                               54</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -157,7 +157,7 @@
                                         <td><span class="badge badge-success">Shipped</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                90,80,90,-70,61,-83,63</div>
+                                               54</div>
                                         </td>
                                     </tr>
                                 </tbody>

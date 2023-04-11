@@ -12,7 +12,7 @@ class ShoppingCartController extends Controller
      */
     public function index()
     {
-        //
+        return view('client.cart.index');
     }
 
     /**
@@ -28,7 +28,6 @@ class ShoppingCartController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -36,7 +35,9 @@ class ShoppingCartController extends Controller
      */
     public function show(ShoppingCart $shoppingCart)
     {
-        //
+        $cart = ShoppingCart::with('user', 'item.product')->get();
+
+        return view('client.cart.index', compact('cart'));
     }
 
     /**

@@ -21,7 +21,13 @@ class ShoppingCartsTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
-           
+            [
+                'user_id' => 2,
+                'product_option_id' => 2,
+                'quantity' => 5,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
     }
 }

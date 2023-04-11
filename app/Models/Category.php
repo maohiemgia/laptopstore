@@ -19,9 +19,9 @@ class Category extends Model
 
     // declare a protected $dates property to cast the deleted_at column to a Carbon instance.
     protected $dates = ['deleted_at'];
-    
-    public function sub(): HasMany
+
+    public function subcategories(): HasMany
     {
-        return $this->HasMany(SubCategory::class);
+        return $this->hasMany(SubCategory::class);
     }
 }

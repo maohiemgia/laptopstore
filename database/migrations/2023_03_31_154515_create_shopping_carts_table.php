@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('shopping_carts', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unique();
+            $table->integer('user_id');
             $table->integer('product_option_id');
-            $table->integer('quantity')->default(0);
+            $table->integer('quantity')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

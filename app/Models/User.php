@@ -20,7 +20,9 @@ class User extends Authenticatable
         'address',
         'birthday',
         'gender',
-        'role'
+        'role',
+        'email_verified_at',
+        'remember_token'
     ];
 
     protected $hidden = [
@@ -31,4 +33,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function shoppingCart()
+    {
+        return $this->hasOne(ShoppingCart::class);
+    }
 }
