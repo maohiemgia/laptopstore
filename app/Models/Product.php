@@ -14,6 +14,7 @@ class Product extends Model
         'image',
         'description',
         'sub_category_id',
+        'category_id'
     ];
 
     public function productoptions()

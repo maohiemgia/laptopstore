@@ -4,17 +4,32 @@
     <style>
         .product-options {
             cursor: pointer;
-
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
         }
 
         .product-options>span>b {
             color: #000;
         }
 
+        .product-options.active::after {
+            content: '\f00c';
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 40px;
+            color: #f02135;
+            padding: 10px;
+            width: fit-content;
+            position: absolute;
+            top: -40px;
+            right: -25px;
+        }
+
         .product-options:hover,
         .product-options.active {
-            background: #ff0000;
+            background: #28ac00;
             color: #fff;
+            position: relative;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
         }
 
         .product-options span {
@@ -26,7 +41,7 @@
 {{-- content --}}
 @section('main-content')
     <!-- breadcrumb start-->
-    <section class="breadcrumb mt-5"
+    <section class="breadcrumb mt-5 pt-5"
         style="background-image: url({{ asset($product->image) }});
   background-position: center;
   background-repeat: no-repeat;
@@ -117,8 +132,8 @@
                                 <span>Chọn cấu hình: </span>
                                 <ul class="list">
                                     @foreach ($product->productoptions as $option)
-                                        <li class="btn px-2 my-1 border-danger product-options"
-                                            data-productid="{{ $product->id }}" data-optionid="{{ $option->id }}">
+                                        <li class="btn p-3 my-2 product-options" data-productid="{{ $product->id }}"
+                                            data-optionid="{{ $option->id }}">
                                             <span class="d-inline-block">
                                                 <b>CPU:</b>
                                                 {{ $option->cpu }}
@@ -153,7 +168,9 @@
                                         min="1">
                                     <span class="number-increment" style="cursor: pointer;"> <i class="ti-plus"></i></span>
                                 </div>
-                                <a href="#" class="btn_3" id="addtocartbtn">Thêm vào giỏ</a>
+                                <button class="btn_3" id="addtocartbtn" data-toggle="popover" data-placement="right">
+                                    Thêm vào giỏ
+                                </button>
                             </div>
                         @endif
                     </div>
@@ -186,7 +203,11 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tbody id="optioninfo">
-                                <tr>Loading...</tr>
+                                <tr>
+                                    <td>
+                                        Đang cập nhật...
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

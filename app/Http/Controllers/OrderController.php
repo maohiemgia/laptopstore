@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
@@ -37,10 +39,34 @@ class OrderController extends Controller
         // nhận dữ liệu giỏ hàng từ cookie
         $productOptionsCookie = $_COOKIE['productOptions'];
         $productOptions = json_decode($productOptionsCookie, true);
+        // Validate the voucher code
+        $validator = Validator::make($request->all(), [
+            'customer_name' => 'required|string|max:255',
+            'customer_email' => 'required|email|max:255',
+            'customer_address' => 'required|string|max:255',
+            'customer_phone_number' => 'required|string|max:20',
+            'shipping_fee' => 'numeric',
+            'total_cost' => 'required|numeric|min:0',
+            'note' => 'nullable|string',
+            'discount_value' => 'nullable|numeric'
+        ], [
+            'customer_name.required' => 'Tên khách hàng không được để trống.',
+            'customer_email.required' => 'Email khách hàng không được để trống.',
+            'customer_email.email' => 'Email khách hàng không hợp lệ.',
+            'customer_address.required' => 'Địa chỉ khách hàng không được để trống.',
+            'customer_phone_number.required' => 'Số điện thoại khách hàng không được để trống.',
+            'shipping_fee.numeric' => 'Phí vận chuyển phải là số.',
+            'total_cost.required' => 'Tổng giá trị đơn hàng không được để trống.',
+            'total_cost.numeric' => 'Tổng giá trị đơn hàng phải là số.',
+            'total_cost.min' => 'Tổng giá trị đơn hàng không được nhỏ hơn 0.',
+            'discount_value.numeric' => 'Giá trị giảm giá phải là số.',
+        ]);
 
-        // The incoming request is valid then...
-        // Retrieve the validated input data...
-        // $validated = $request->validated();
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+
         $order = new Order;
         $order->customer_name = $request->input('customer_name');
         $order->customer_email = $request->input('customer_email');
@@ -48,8 +74,10 @@ class OrderController extends Controller
         $order->customer_phone_number = $request->input('customer_phone_number');
         $order->shipping_fee = $request->input('shipping_fee');
         $order->payment_type = $request->input('payment_type');
-        $order->total_cost = $request->input('total_cost');
+        $order->total_cost = $request->input('total_cost') + $request->input('shipping_fee') - $request->input('discount_value');
         $order->note = $request->input('note');
+        $order->discount_value = $request->input('discount_value');
+
 
         $order->save();
 
@@ -69,7 +97,10 @@ class OrderController extends Controller
             OrderDetail::create($ord);
         }
 
+        setcookie('productOptions', '', time() - 3600);
         session()->flush();
+        session(['checkResult' => $request->input('customer_email')]);
+
 
         return redirect('/order-result/' . $order->id);
     }

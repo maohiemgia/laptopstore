@@ -146,7 +146,8 @@
                     <div class="row align-items-center latest_product_inner">
                         @foreach ($newproducts as $product)
                             <div class="col-lg-4 col-sm-6">
-                                <div class="single_product_item">
+                                <div class="single_product_item"
+                                    onclick="location.href='/product-detail/{{ $product->id }}'">
                                     @if (!is_null($product->productoptions->first()) && $product->productoptions->first()->discount_value > 0)
                                         <span class="bg-danger p-2 px-3 text-white position-absolute" style="right: 20px;">
                                             Giảm
@@ -154,11 +155,9 @@
                                             đ
                                         </span>
                                     @endif
-                                    <img src="{{ $product->image }}" alt="product" style="cursor: pointer;"
-                                        title="Xem chi tiết" onclick="location.href='/product-detail/{{ $product->id }}'">
+                                    <img src="{{ $product->image }}" alt="product">
                                     <div class="single_product_text">
-                                        <h4 style="cursor: pointer;"
-                                            onclick="location.href='/product-detail/{{ $product->id }}'">
+                                        <h4>
                                             {{ $product->name }}</h4>
                                         <h3>
                                             Giá:
@@ -174,7 +173,10 @@
                                                 @endif
                                             @endif
                                         </h3>
-                                        <a href="#" class="add_cart">+ Thêm vào giỏ</a>
+                                        <a class="add_cart btn">
+                                            <i class="fas fa-search fa-lg" style="color: #e40d0d;"></i>
+                                            Xem chi tiết
+                                        </a>
                                     </div>
                                 </div>
                             </div>
