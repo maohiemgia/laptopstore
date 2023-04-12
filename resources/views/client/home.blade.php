@@ -11,11 +11,11 @@
 {{-- content --}}
 @section('main-content')
     <!-- banner part start-->
-    <section class="banner_part">
-        <div class="container">
+    <section class="banner_part mt-5">
+        <div class="container mt-5 mx-auto">
             <div class="row mx-auto align-items-center">
                 <div class="col-lg-12">
-                    <div class="banner_slider owl-carousel">
+                    <div class="banner_slider owl-carousel" style="cursor: pointer">
                         @foreach ($headerbanners as $headerbanner)
                             <div class="single_banner_slider">
                                 <div class="row mx-auto">
@@ -42,16 +42,21 @@
             </div>
             <div class="row align-items-center justify-content-between">
                 @foreach ($featureproducts as $index => $item)
-                    @if ($index % 2 == 0)
+                    @if ($index == 0 || $index == 3)
                         <div class="col-lg-7 col-sm-6">
                         @else
                             <div class="col-lg-5 col-sm-6">
                     @endif
-                    <div class="single_feature_post_text"
+                    <div class="single_feature_post_text" style="cursor: pointer"
                         onclick="location.href='/product-detail/{{ $item->product->id }}'">
-                        <p>Premium Quality</p>
-                        <h3 class="bg-light text-wrap position-absolute" style="z-index: 3;">{{ $item->product->name }}</h3>
-                        <a href="#" class="feature_btn text-uppercase">Xem ngay <i class="fas fa-play"></i></a>
+                        {{-- <p>Premium Quality</p> --}}
+                        <h3 class="bg-light p-1 text-wrap position-absolute" style="z-index: 3;top:20%">
+                            {{ $item->product->name }}</h3>
+                        <a href="#" class="feature_btn text-uppercase bg-danger text-white p-2"
+                            style="bottom: 40%;left:40%">
+                            Xem ngay
+                            <i class="fas fa-play text-white"></i>
+                        </a>
                         <img src="{{ asset($item->product->image) }}" alt="product">
                     </div>
             </div>
@@ -79,13 +84,23 @@
                     <div class="row mx-auto align-items-center justify-content-between">
                         @foreach ($newproducts as $product)
                             <div class="col-lg-3 col-sm-6">
-                                <div class="single_product_item">
-                                    <img src="{{ asset($product->image) }}"
-                                        onclick="location.href='/product-detail/{{ $product->id }}'" alt="product">
+                                <div class="single_product_item"
+                                    onclick="location.href='/product-detail/{{ $product->id }}'">
+                                    <img src="{{ asset($product->image) }}" alt="product">
                                     <div class="single_product_text">
-                                        <h4 class="overflow-x-auto">{{ $product->name }}</h4>
-                                        {{-- <h3>{{ $product->productoptions->first()->price }}đ</h3> --}}
-                                        <a href="#" class="add_cart">+ Thêm vào giỏ</a>
+                                        <h4>{{ $product->name }}</h4>
+                                        @if (is_null($product->productoptions->first()))
+                                            <h3>Giá liên hệ</h3>
+                                        @else
+                                            <h3>
+                                                {{ number_format($product->productoptions->first()->price, 0, ',', '.') }}
+                                                đ
+                                            </h3>
+                                        @endif
+                                        <a class="add_cart text-center btn">
+                                           <i class="fas fa-search fa-lg" style="color: #e40d0d;"></i>
+                                            Xem chi tiết
+                                        </a>
                                     </div>
                                 </div>
                             </div>

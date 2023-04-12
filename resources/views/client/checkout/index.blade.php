@@ -22,42 +22,67 @@
                     Vui lòng điền thông tin người nhận
                 </p>
             </div>
-            <div class="cupon_area">
-                <div class="check_title">
-                    <h2>
-                        Có mã giảm giá?
-                        <a href="#" onclick="displayCouponField()">Bấm để nhập mã giảm giá</a>
-                    </h2>
+            {{-- notification apply success voucher --}}
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
                 </div>
-                <div class="row mx-0 flex-column justify-content-start align-items-start" id="enterCouponField">
-                    <input type="text" placeholder="Nhập mã giảm giá" />
-                    <a class="tp_btn" href="#">Áp dụng</a>
+                <button class="btn d-block btn-warning text-white" onclick="location.reload()">Bỏ dùng mã giảm giá?</button>
+            @else
+                <div class="cupon_area">
+                    <div class="check_title">
+                        <h2>
+                            Có mã giảm giá?
+                            <a href="#" onclick="displayCouponField()">Bấm để nhập mã giảm giá</a>
+                        </h2>
+                    </div>
+                    <div class="row mx-0 mb-3 flex-column justify-content-start align-items-start" id="enterCouponField">
+                        <form action="/checkvoucher" method="POST">
+                            @method('post')
+                            @csrf
+                            <input type="text" name="name" placeholder="Nhập mã giảm giá" />
+                            <button class="tp_btn" type="submit">Áp dụng</button>
+                        </form>
+                    </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger" style="max-width: 400px;">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
-            </div>
+            @endif
             <div class="billing_details">
                 <form class="contact_form" action="/order/store" method="post" novalidate="novalidate">
                     @method('post')
                     @csrf
 
-                    <div class="row mx-auto">
+                    <div class="row mx-auto mt-3">
                         <div class="col-lg-8">
                             <h3>Chi tiết hóa đơn</h3>
                             <div class="row mx-0 contact_form" novalidate="novalidate">
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="customer_name" name="customer_name"
                                         placeholder="Tên người nhận" />
+                                    <span class="font-weight-lighter">*Bắt buộc nhập</span>
                                 </div>
                                 <div class="col-md-6 form-group p_star">
                                     <input type="text" class="form-control" id="customer_email" name="customer_email"
                                         placeholder="Email theo dõi đơn hàng" />
+                                    <span class="font-weight-lighter">*Bắt buộc nhập</span>
                                 </div>
                                 <div class="col-md-6 form-group p_star">
                                     <input type="text" class="form-control" id="customer_phone_number"
                                         name="customer_phone_number" placeholder="Số điện thoại nhận hàng" />
+                                    <span class="font-weight-lighter">*Bắt buộc nhập</span>
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <input type="text" class="form-control" id="customer_address" name="customer_address"
                                         placeholder="Địa chỉ nhận hàng" />
+                                    <span class="font-weight-lighter">*Bắt buộc nhập</span>
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <textarea class="form-control" name="note" id="note" rows="1" placeholder="Ghi chú"></textarea>
@@ -82,12 +107,23 @@
                                     </li>
                                     <li>
                                         <a href="#">Phí ship
-                                            <span>30.000</span>
+                                            <span>+30.000</span>
                                         </a>
                                     </li>
+                                    @if (session('voucher_return'))
+                                        <li>
+                                            <a href="#">Mã giảm giá
+                                                @foreach (session('voucher_return') as $key => $value)
+                                                    @if ($key == 'value')
+                                                        <span id="valuevoucher">{{ $value }}</span>
+                                                    @endif
+                                                @endforeach
+                                            </a>
+                                        </li>
+                                    @endif
                                     <li>
                                         <a href="#">Tổng thanh toán
-                                            <span id="totalCost">$2210.00</span>
+                                            <span class="font-weight-bolder" id="totalCost">$2210.00</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -104,7 +140,6 @@
                                     <div class="radion_btn">
                                         <input type="radio" id="f-option6" value="1" name="payment_type" disabled />
                                         <label for="f-option6">Thanh toán online(Đang bảo trì)</label>
-                                        <img src="img/product/single-product/card.jpg" alt="" />
                                         <div class="check"></div>
                                     </div>
 
@@ -115,6 +150,7 @@
                     </div>
                     <input type="text" name="total_cost" class="d-none" id="total_cost">
                     <input type="text" name="shipping_fee" value="30000" class="d-none" id="shipping_fee">
+                    <input type="text" name="discount_value" class="d-none" id="discount_value">
                 </form>
             </div>
         </div>
