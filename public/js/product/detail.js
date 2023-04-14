@@ -36,6 +36,13 @@ if (productoptions && productoptions.length) {
             productoptions[0].classList.add("active");
             productitem.cartquantity = itemQuantity.value;
             itemQuantity.setAttribute("max", productitem.quantity);
+            if (productitem.quantity < 1) {
+                optionquantity.innerText = "Hết hàng";
+                document.getElementById("quantityzerodisplay").style.display =
+                    "block";
+                document.getElementById("additemdisplay").className +=
+                    " hidden";
+            }
 
             return;
         });

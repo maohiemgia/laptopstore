@@ -148,7 +148,6 @@ class HomeController extends Controller
           $voucher_return = [
                'name' => $voucher_match->name,
                'value' => $voucher_match->value,
-               'max_value' => $voucher_match->max_des_value
           ];
           // create a session have voucher id to decres voucher quantity after order saved
           session()->put('voucher', $voucher_match->id);

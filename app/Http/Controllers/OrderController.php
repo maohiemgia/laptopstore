@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderConfirmation;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\ProductOption;
@@ -121,8 +123,13 @@ class OrderController extends Controller
         session()->flush();
         session(['checkResult' => $request->input('customer_email')]);
 
+        $order = Order::with('orderdetails')->find($order->id);
 
-        return redirect('/order-result/' . $order->id);
+        $orderdata = $order->toArray();
+
+        Mail::to($order->customer_email)->send(new OrderConfirmation($orderdata));
+
+        return redirect('/order-result/' . $order->id)->with('success', 'Email chứa thông tin đơn hàng đã được gửi tới Mail của bạn!');
     }
 
     /**
