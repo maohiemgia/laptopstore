@@ -8,7 +8,7 @@ let pricedisplay = document.querySelector("#pricedisplay");
 let itemQuantity = document.querySelector("#itemQuantity");
 
 if (productoptions && productoptions.length) {
-    document.getElementById('quantityzerodisplay').style.display = "none";
+    document.getElementById("quantityzerodisplay").style.display = "none";
 
     let productid = productoptions[0].dataset.productid;
     let productitem = {};
@@ -58,13 +58,20 @@ if (productoptions && productoptions.length) {
                     productitem = optionitem;
                     productitem.optionindex = optionindex;
                     optionquantity.innerText = optionitem.quantity;
-                    document.getElementById('quantityzerodisplay').style.display = "none";
-                    document.getElementById('additemdisplay').classList.remove("hidden");
+                    document.getElementById(
+                        "quantityzerodisplay"
+                    ).style.display = "none";
+                    document
+                        .getElementById("additemdisplay")
+                        .classList.remove("hidden");
 
                     if (optionitem.quantity < 1) {
-                        optionquantity.innerText = 'Hết hàng';
-                        document.getElementById('quantityzerodisplay').style.display = "block";
-                        document.getElementById('additemdisplay').className += ' hidden';
+                        optionquantity.innerText = "Hết hàng";
+                        document.getElementById(
+                            "quantityzerodisplay"
+                        ).style.display = "block";
+                        document.getElementById("additemdisplay").className +=
+                            " hidden";
                     }
 
                     pricedisplay.innerHTML =
@@ -177,8 +184,8 @@ if (productoptions && productoptions.length) {
         });
     });
 
-     // display add to cart notification
-     window.addEventListener('DOMContentLoaded', function() {
+    // display add to cart notification
+    window.addEventListener("DOMContentLoaded", function () {
         $(addtocartbtn).popover({
             content: "Thêm vào giỏ hàng thành công!",
             placement: "right",
@@ -186,18 +193,29 @@ if (productoptions && productoptions.length) {
             container: "#addtocartbtn",
         });
 
-        $(addtocartbtn).on('shown.bs.popover', function() {
+        $(addtocartbtn).on("shown.bs.popover", function () {
             updateDisplayCartLengthFunc();
 
-            setTimeout(function() {
-                $(addtocartbtn).popover('hide');
+            setTimeout(function () {
+                $(addtocartbtn).popover("hide");
             }, 2000);
         });
+    });
+
+    itemQuantity.addEventListener("change", function () {
+        if (itemQuantity.value > itemQuantity.max) {
+            productitem.cartquantity = itemQuantity.max;
+        }
     });
 
     addtocartbtn.addEventListener("click", function () {
         let localCart = JSON.parse(localStorage.getItem("cart"));
         productitem.cartquantity = itemQuantity.value;
+
+        if (itemQuantity.value > itemQuantity.max) {
+            productitem.cartquantity = itemQuantity.max;
+        }
+
         productitem.product_name = productName;
         productitem.product_image = productImage;
 
