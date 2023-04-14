@@ -35,6 +35,7 @@ if (productoptions && productoptions.length) {
 
             productoptions[0].classList.add("active");
             productitem.cartquantity = itemQuantity.value;
+            itemQuantity.setAttribute("max", productitem.quantity);
 
             return;
         });
@@ -203,8 +204,11 @@ if (productoptions && productoptions.length) {
     });
 
     itemQuantity.addEventListener("change", function () {
-        if (itemQuantity.value > itemQuantity.max) {
-            productitem.cartquantity = itemQuantity.max;
+        if (parseInt(itemQuantity.value) > parseInt(itemQuantity.max)) {
+            productitem.cartquantity = parseInt(itemQuantity.max);
+        }
+        if (parseInt(itemQuantity.value) < parseInt(itemQuantity.min)) {
+            productitem.cartquantity = parseInt(itemQuantity.min);
         }
     });
 
@@ -212,8 +216,11 @@ if (productoptions && productoptions.length) {
         let localCart = JSON.parse(localStorage.getItem("cart"));
         productitem.cartquantity = itemQuantity.value;
 
-        if (itemQuantity.value > itemQuantity.max) {
-            productitem.cartquantity = itemQuantity.max;
+        if (parseInt(itemQuantity.value) > parseInt(itemQuantity.max)) {
+            productitem.cartquantity = parseInt(itemQuantity.max);
+        }
+        if (parseInt(itemQuantity.value) < parseInt(itemQuantity.min)) {
+            productitem.cartquantity = parseInt(itemQuantity.min);
         }
 
         productitem.product_name = productName;
