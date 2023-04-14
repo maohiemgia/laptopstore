@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::orderBy('id', 'desc')->get();
+        $products = Product::orderBy('id', 'desc')->paginate(5);
         if (preg_match("/api/", $request->url())) {
             return $products;
         }
@@ -87,7 +87,7 @@ class ProductController extends Controller
      */
     public function show(Request $request)
     {
-        $product = Product::find($request->product);
+        $product = Product::with('category')->with('productoptions')->find($request->product);
         if (preg_match("/api/", $request->url())) {
             return $product;
         }

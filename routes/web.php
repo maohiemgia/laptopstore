@@ -7,6 +7,7 @@ use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UserController;
@@ -112,4 +113,14 @@ Route::middleware(['auth', 'verified', 'checkRole'])->prefix('orders')->group(fu
     Route::put('{id}', [OrderController::class, 'update']);
     Route::delete('{id}', [OrderController::class, 'destroy']);
     Route::put('{id}/restore', [OrderController::class, 'restore']);
+});
+
+Route::middleware(['auth', 'verified', 'checkRole'])->prefix('vouchers')->group(function () {
+    Route::get('', [VoucherController::class, 'index']);
+    Route::get('create', [VoucherController::class, 'create']);
+    Route::post('store', [VoucherController::class, 'store'])->name('vouchers.store');
+    Route::get('{id}', [VoucherController::class, 'edit']);
+    Route::put('{id}', [VoucherController::class, 'update']);
+    Route::delete('{id}', [VoucherController::class, 'destroy']);
+    Route::put('{id}/restore', [VoucherController::class, 'restore']);
 });

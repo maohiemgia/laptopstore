@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 {{-- page title --}}
-@section('page_title', 'Quản lý sản phẩm')
+@section('page_title', 'Quản lý phiên bản')
 
 {{-- style --}}
 
@@ -51,9 +51,7 @@
         }
     </style>
 @endpush
-@section('style')
-    <link rel="stylesheet" href="{{ asset('css/admin/order.css') }}">
-@endsection
+
 {{-- content --}}
 @section('main-content')
     <div class="container-fluid mt-5 px-2 px-lg-5">
@@ -64,36 +62,35 @@
             </div>
         @endif
 
-        <h2>Danh sách sản phẩm &#127808;</h2>
+        <h2>Danh sách mã giảm giá &#127808;</h2>
         <div class="row mx-auto my-3 d-flex justify-content-between">
-            <a href="/products/create" class="d-block btn btn-success text-white w-auto">&#43; Thêm mới</a>
+            <a href="/vouchers/create" class="d-block btn btn-success text-white w-auto">&#43; Thêm mới</a>
         </div>
 
         <table class="table">
             <thead>
                 <tr class=" text-center">
                     <th  scope="col">STT</th>
-                    <th  scope="col">Tên sản phẩm</th>
-                    <th  scope="col">Ảnh</th>
+                    <th  scope="col">Mã giảm giá</th>
+                    <th  scope="col">Giá trị</th>
+                    <th  scope="col">Điều kiện áp dụng</th>
+                    <th  scope="col">Số lượng</th>
+                    <th  scope="col">Đã sử dụng</th>
+                    <th  scope="col">Ngày hết hạn</th>
                     <th  scope="col">Mô tả</th>
-                    <th  scope="col">Biến thể</th>
+                    <th  scope="col">Trạng thái</th>
                     <th  scope="col" colspan="3">Hành động</th>
                 </tr>
             </thead>
-            <tbody id="tableshow">
+            <tbody id="table">
                 
             </tbody>
           </table>
-            <nav aria-label="Page navigation example" class="d-flex justify-content-center">
-                <ul  id="paginate" class="pagination">
 
-                </ul>
-            </nav>
-            <div id="detail" class="row">
-            </div>
+            
 
         <a href="/dashboard" class="d-inline-block btn btn-primary text-white w-auto mt-2 mb-3">&larr; Trang chủ</a>
     </div>
 
-    <script src="{{ asset('js/product/index.js') }}"></script>
+    <script src="{{ asset('js/voucher/index.js') }}"></script>
 @endsection
