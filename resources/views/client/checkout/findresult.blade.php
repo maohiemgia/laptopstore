@@ -19,11 +19,11 @@
                             @csrf
 
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="order" name="order_id"
+                                <input type="text" class="form-control" id="order" name="order_id" value="{{ old('order_id') }}"
                                     placeholder="ID đơn hàng">
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="email" class="form-control" id="email" name="customer_email"
+                                <input type="email" class="form-control" id="email" name="customer_email" value="{{ old('customer_email') }}"
                                     placeholder="Địa chỉ email">
                             </div>
                             <div class="col-md-12 form-group">

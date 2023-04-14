@@ -111,14 +111,18 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="/users" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="text-capitalize">Danh sách</p>
+                                <p class="text-capitalize d-flex align-items-center">
+                                    <span class="fa-2x pl-4 pr-3">+</span> 
+                                    Danh sách
+                                </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/users/create" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="text-capitalize">tạo mới</p>
+                                <p class="text-capitalize d-flex align-items-center">
+                                    <span class="fa-2x pl-4 pr-3">+</span> 
+                                    tạo mới
+                                </p>
                             </a>
                         </li>
                     </ul>

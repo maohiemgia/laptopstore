@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('product_id');
             $table->integer('quantity')->default(1);
-            $table->integer('price')->default(0);
+            $table->bigInteger('price')->default(0);
             $table->boolean('status')->default(true)->comment('false:not sell, true:sell');
             $table->integer('discount_value')->default(0)->comment('discount money'); 
             $table->string('screen')->nullable();

@@ -19,11 +19,9 @@
 <body class="font-sans text-gray-900 antialiased">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
         <div>
-            <a href="/">
-                <a href="/"
-                    style="display: block; background: red; color: white; text-transform: uppercase; font-weight: 700; font-size: 2rem; padding: 5px 10px;">
-                    typhoon
-                </a>
+            <a href="/"
+                style="display: block; background: red; color: white; text-transform: uppercase; font-weight: 700; font-size: 2rem; padding: 5px 10px;">
+                typhoon
             </a>
         </div>
 

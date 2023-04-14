@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('vouchers', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique()->comment('code of voucher');
-            $table->integer('value')->default(0);
-            $table->integer('require_money')->nullable()->comment('Điều kiện áp dụng');
+            $table->bigInteger('value')->default(0);
+            $table->bigInteger('require_money')->nullable()->comment('Điều kiện áp dụng');
             $table->string('description')->nullable();
             $table->integer('quantity')->default(1);
             $table->integer('count_use')->default(0);

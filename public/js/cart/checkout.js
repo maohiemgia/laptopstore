@@ -55,7 +55,7 @@ cartLocalInfo.forEach((ele) => {
     productCartDisplay.innerHTML += `
           <li>
                <a href="#" class="d-flex align-items-start justify-content-between">
-                    ${ele.product_name} (x${ele.cartquantity}) 
+                    ${ele.product_name} (Tùy chọn ${ele.optionindex}) (x${ele.cartquantity}) 
                     <span class="last d-block">${totalCost}</span>
                </a>
           </li>

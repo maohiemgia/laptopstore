@@ -33,6 +33,10 @@ Route::get('/order-result/{id}', [HomeController::class, 'orderresult']);
 Route::get('/find-order', [HomeController::class, 'findorder']);
 Route::post('/matchorder', [HomeController::class, 'matchorder']);
 Route::get('/contact', [HomeController::class, 'contact']);
+Route::get('/search', [HomeController::class, 'searchproduct'])->name('product.search');
+
+//dang làm rở
+Route::get('/filter', [HomeController::class, 'filter'])->name('product.filter');
 
 Route::post('/order/store', [OrderController::class, 'store']);
 
@@ -53,6 +57,7 @@ Route::middleware(['auth', 'verified', 'checkRole'])->prefix('/users')->group(fu
     Route::get('create', [UserController::class, 'create']);
     Route::post('store', [UserController::class, 'store'])->name('user.createnewuser');
     Route::get('{id}', [UserController::class, 'edit']);
+    Route::put('{id}', [UserController::class, 'update']);
     Route::delete('{id}/delete', [UserController::class, 'destroy']);
 });
 

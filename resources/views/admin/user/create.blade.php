@@ -38,16 +38,19 @@
                     <label for="name">Tên hiển thị</label>
                     <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}"
                         placeholder="Tên danh mục sản phẩm..." required>
+                    <span>*Bắt buộc nhập</span>
                 </div>
                 <div class="form-group flex-fill mx-0 mx-lg-3">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}"
                         placeholder="abcxyz@gmail.com" required>
+                    <span>*Bắt buộc nhập</span>
                 </div>
                 <div class="form-group flex-fill mx-0 mx-lg-3">
                     <label for="password">Mật khẩu</label>
                     <input type="text" name="password" id="password" class="form-control" value="{{ old('password') }}"
                         placeholder="Nhập mật khẩu" required>
+                    <span>*Bắt buộc nhập</span>
                 </div>
                 <div class="form-group flex-fill mx-0 mx-lg-3">
                     <label for="sdt">Số điện thoại</label>
@@ -83,7 +86,7 @@
                     </div>
                 </div>
                 <div class="form-group w-100 d-flex justify-content-center">
-                    <img src="{{ asset('/images/1680696159.jpg') }}" class="img-rounded img-fluid"
+                    <img class="img-rounded img-fluid"
                         style="width:200px;height:200px" alt="img preview" id="img-preview">
                 </div>
             </div>

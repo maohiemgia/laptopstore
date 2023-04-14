@@ -32,10 +32,12 @@ function renderCartDetail() {
           <td>
                <div class="media">
                     <div class="d-flex">
-                         <img src="${ele.product_image}" style="width: 200px;height: 150px;" alt="product" />
+                         <img src="${ele.product_image}" style="width: 200px;height: 150px;cursor:pointer;" alt="product" onclick="location.href='/product-detail/${ele.product_id}'" />
                     </div>
                     <div class="media-body w-100" style="max-width: 450px;height:100px;overflow:overlay;">
-                         <p class="font-weight-bold">${ele.product_name} </p>
+                         <p class="font-weight-bold" style="cursor:pointer;" onclick="location.href='/product-detail/${ele.product_id}'">
+                            ${ele.product_name} (Tùy chọn ${ele.optionindex})
+                         </p>
                          <p>CPU: ${ele.cpu}</p> 
                          <p>GPU: ${ele.gpu}</p> 
                          <p>RAM: ${ele.ram}</p> 
@@ -50,12 +52,12 @@ function renderCartDetail() {
           </td>
           <td>
                <div class="product_count">
-                    <span class="input-number-decrement" data-toggle="popover" onclick="decItem(this)"> 
+                    <span class="input-number-decrement" data-toggle="popover" data-content="Tối thiểu 1" data-placement="top" data-container="#inputdisplay${index}" onclick="decItem(this)"> 
                          <i class="ti-angle-down"></i> 
                     </span>
                     <input class="input-number-display" type="number" value="${ele.cartquantity}" min="1"
-                         max="${ele.quantity}" data-cartitemid="${ele.id}">
-                    <span class="input-number-increment" data-toggle="popover" onclick="incItem(this)"> 
+                         max="${ele.quantity}" data-cartitemid="${ele.id}" id="inputdisplay${index}" onchange="updateCartItemQuantity(${ele.id}, this.value, this)">
+                    <span class="input-number-increment" data-toggle="popover" data-content="Tối đa ${ele.quantity}" data-placement="top" data-container="#inputdisplay${index}" onclick="incItem(this)"> 
                          <i class="ti-angle-up"></i> 
                     </span>
                </div>
@@ -116,18 +118,6 @@ function incItem(element) {
     // Get the input element
     var input = element.parentNode.querySelector(".input-number-display");
 
-    // if input value NaN (empty)
-    if (Number.isNaN(parseFloat(input.value))) {
-        input.value = 0;
-    }
-
-    $(element).popover({
-        content: "Tối đa " + input.max,
-        placement: "right",
-        trigger: "click",
-        container: "body",
-    });
-
     if (input.value - input.max < 0) {
         input.value = parseInt(input.value) + 1;
         $(element).popover("disable");
@@ -136,29 +126,17 @@ function incItem(element) {
         $(element).on("shown.bs.popover", function () {
             setTimeout(function () {
                 $(element).popover("hide");
-            }, 1200);
+            }, 3000);
         });
     }
 
-    updateCartItemQuantity(input.dataset.cartitemid, input.value);
+    updateCartItemQuantity(input.dataset.cartitemid, input.value, input);
 }
 
 // decrement quantity item cart
 function decItem(element) {
     // Get the input element
     var input = element.parentNode.querySelector(".input-number-display");
-
-    // if input value NaN (empty)
-    if (Number.isNaN(parseFloat(input.value))) {
-        input.value = 1;
-    }
-
-    $(element).popover({
-        content: "Tối thiểu " + input.min,
-        placement: "right",
-        trigger: "click",
-        container: "body",
-    });
 
     if (input.value - input.min > 0) {
         input.value = parseInt(input.value) - 1;
@@ -172,11 +150,25 @@ function decItem(element) {
         });
     }
 
-    updateCartItemQuantity(input.dataset.cartitemid, input.value);
+    updateCartItemQuantity(input.dataset.cartitemid, input.value, input);
 }
 
 // update quantity item cart
-function updateCartItemQuantity(itemId, itemQuantity) {
+function updateCartItemQuantity(itemId, itemQuantity, element) {
+    if (element) {
+        if (Number.isNaN(element.value) || element.value % 1 != 0) {
+            return;
+        }
+        if (element.value < 1) {
+            element.value = 1;
+        }
+        if (parseFloat(element.value) > parseFloat(element.max)) {
+            element.value = element.max;
+        }
+
+        itemQuantity = element.value;
+    }
+
     let localCart = JSON.parse(localStorage.getItem("cart"));
 
     if (localCart != null) {
@@ -211,8 +203,8 @@ function removeCartItem(element) {
                     return;
                 }
             });
-        }else {
-          localStorage.removeItem('cart');
+        } else {
+            localStorage.removeItem("cart");
         }
 
         displayAlert("Xóa thành công!");
