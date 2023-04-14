@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -35,9 +36,23 @@ class ProductController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'name' => 'required|min:3',
+            'description' => 'required',
             'category_id' => 'required',
             'sub_category_id' => 'required',
-            'description' => 'required',
+            'image' => 'nullable|image|max:2048', // nullable and max size of 2MB
+            'slide_image.*' => 'nullable|image|max:2048', // nullable and max size of 2MB for each slide image
+            'slide_image' => 'max:8', // Maximum of 8 files for the slide_image input
+        ], [
+            'name.required' => 'Vui lòng nhập tên sản phẩm',
+            'description.required' => 'Vui lòng nhập mô tả',
+            'name.min' => 'Tên sản phẩm phải có ít nhất :min ký tự',
+            'category_id.required' => 'Vui lòng chọn danh mục sản phẩm',
+            'sub_category_id.required' => 'Vui lòng chọn danh mục con sản phẩm',
+            'image.image' => 'Ảnh sản phẩm không đúng định dạng',
+            'image.max' => 'Ảnh sản phẩm không được vượt quá kích thước :max KB',
+            'slide_image.*.image' => 'Ảnh slide sản phẩm không đúng định dạng',
+            'slide_image.*.max' => 'Kích thước của ảnh slide sản phẩm không được vượt quá :max KB',
+            'slide_image.max' => 'Số lượng ảnh slide sản phẩm không được vượt quá :max',
         ]);
         if ($validate->fails()) {
             $errors = $validate->errors();
@@ -56,8 +71,23 @@ class ProductController extends Controller
                 $request->image->move(public_path('images'), $imageName);
                 $product->image = "images/" . $imageName;
             }
-            // $product->image = $request->file('image')->store('updateImage');
             $result = $product->save();
+
+            if ($request->hasFile('slide_image')) {
+                $files = $request->file('slide_image');
+                foreach ($files as $file) {
+                    $filename = time() . '.' . $file->getClientOriginalName();
+                    // move image to public/images
+                    $file->move(public_path('images'), $filename);
+                    $filepath = "images/" . $filename;
+
+                    $gallery = new ProductGallery;
+                    $gallery->product_id = $product->id;
+                    $gallery->image = $filepath;
+                    $gallery->save();
+                }
+            }
+
             if ($result) {
                 return redirect('/products')->with('success', "Tạo mới sản phẩm thành công");
             } else {

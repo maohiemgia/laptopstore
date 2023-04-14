@@ -140,7 +140,7 @@ class HomeController extends Controller
 
           if ($validator->fails()) {
                // Redirect back with error message
-               return redirect()->back()->withErrors($validator)->withInput();
+               return redirect()->back()->withErrors($validator->errors())->withInput();
           }
 
           $voucher_match = Voucher::where('name', $voucher_code)->first();

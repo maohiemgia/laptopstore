@@ -72,25 +72,25 @@
         <table class="table">
             <thead>
                 <tr class=" text-center">
-                    <th  scope="col">STT</th>
-                    <th  scope="col">Tên sản phẩm</th>
-                    <th  scope="col">Ảnh</th>
-                    <th  scope="col">Mô tả</th>
-                    <th  scope="col">Biến thể</th>
-                    <th  scope="col" colspan="3">Hành động</th>
+                    <th scope="col">STT</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Ảnh</th>
+                    <th scope="col">Mô tả</th>
+                    <th scope="col">Biến thể</th>
+                    <th scope="col" colspan="3">Hành động</th>
                 </tr>
             </thead>
             <tbody id="tableshow">
-                
-            </tbody>
-          </table>
-            <nav aria-label="Page navigation example" class="d-flex justify-content-center">
-                <ul  id="paginate" class="pagination">
 
-                </ul>
-            </nav>
-            <div id="detail" class="row">
-            </div>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+            <ul id="paginate" class="pagination">
+
+            </ul>
+        </nav>
+        <div id="detail" class="row">
+        </div>
 
         <a href="/dashboard" class="d-inline-block btn btn-primary text-white w-auto mt-2 mb-3">&larr; Trang chủ</a>
     </div>

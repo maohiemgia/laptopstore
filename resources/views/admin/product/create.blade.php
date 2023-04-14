@@ -30,9 +30,15 @@
             </p>
             <a href="/products/create" class="d-block btn btn-success text-white w-auto">Làm mới</a>
         </div>
+        {{-- notification if success --}}
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <!-- Display any validation errors -->
         @if ($errors->any())
-            <div class="alert bg-danger text-white">
+            <div class="alert alert-danger" style="max-width: 400px;">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -50,23 +56,28 @@
             </div>
             <div class="form-group col-6">
                 <label for="id">Tên danh mục</label>
-                <select id="category" name="category_id" class="form-control" value="{{ old('name') }}">
+                <select id="category" name="category_id" class="form-control" value="{{ old('category_id') }}">
                 </select>
             </div>
             <div class="form-group col-6">
                 <label for="id">Tên loại:</label>
-                <select id="subCategories" name="sub_category_id" class="form-control" value="{{ old('name') }}">
-                    
+                <select id="subCategories" name="sub_category_id" class="form-control" value="{{ old('sub_category_id') }}">
+
                 </select>
             </div>
             <div class="form-group col-6">
                 <label for="id">Ảnh sản phẩm:</label>
-                <input type="file" id="image" name="image" class="form-control" value="{{ old('name') }}"
+                <input type="file" id="image" name="image" class="form-control" value="{{ old('image') }}"
                     placeholder="Ảnh sản phẩm" accept="image/*">
+            </div>
+            <div class="form-group col-6">
+                <label for="id">Ảnh slide sản phẩm:</label>
+                <input type="file" id="image" name="slide_image[]" class="form-control"
+                    value="{{ old('slide_image') }}" placeholder="Ảnh sản phẩm" accept="image/*" multiple>
             </div>
             <div class="form-group col-12">
                 <label for="id">Mô tả: </label>
-                <textarea id="desc" name="description" cols="30" rows="10" class="form-control">{{ old('name') }}</textarea>
+                <textarea id="desc" name="description" cols="30" rows="10" class="form-control">{{ old('description') }}</textarea>
             </div>
             <button id="submit" class="btn btn-danger my-3">Lưu</button>
         </form>
@@ -77,4 +88,3 @@
 
     <script src="{{ asset('js/product/create.js') }}"></script>
 @endsection
-
