@@ -40,7 +40,7 @@
                         <form action="/checkvoucher" method="POST">
                             @method('post')
                             @csrf
-                            <input type="text" name="name" placeholder="Nhập mã giảm giá" />
+                            <input type="text" name="name" value="{{ old('name') }}" placeholder="Nhập mã giảm giá" />
                             <button class="tp_btn" type="submit">Áp dụng</button>
                         </form>
                     </div>
@@ -66,26 +66,28 @@
                             <div class="row mx-0 contact_form" novalidate="novalidate">
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="customer_name" name="customer_name"
-                                        placeholder="Tên người nhận" />
+                                        value="{{ old('customer_name') }}" placeholder="Tên người nhận" />
                                     <span class="font-weight-lighter">*Bắt buộc nhập</span>
                                 </div>
                                 <div class="col-md-6 form-group p_star">
                                     <input type="text" class="form-control" id="customer_email" name="customer_email"
-                                        placeholder="Email theo dõi đơn hàng" />
+                                        value="{{ old('customer_email') }}" placeholder="Email theo dõi đơn hàng" />
                                     <span class="font-weight-lighter">*Bắt buộc nhập</span>
                                 </div>
                                 <div class="col-md-6 form-group p_star">
                                     <input type="text" class="form-control" id="customer_phone_number"
-                                        name="customer_phone_number" placeholder="Số điện thoại nhận hàng" />
+                                        name="customer_phone_number" value="{{ old('customer_phone_number') }}"
+                                        placeholder="Số điện thoại nhận hàng" />
                                     <span class="font-weight-lighter">*Bắt buộc nhập</span>
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <input type="text" class="form-control" id="customer_address" name="customer_address"
-                                        placeholder="Địa chỉ nhận hàng" />
+                                        value="{{ old('customer_address') }}" placeholder="Địa chỉ nhận hàng" />
                                     <span class="font-weight-lighter">*Bắt buộc nhập</span>
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <textarea class="form-control" name="note" id="note" rows="1" placeholder="Ghi chú"></textarea>
+                                    <textarea class="form-control" name="note" id="note" rows="1"
+                                        placeholder="Ghi chú">{{ old('note') }}</textarea>
                                 </div>
                             </div>
                         </div>

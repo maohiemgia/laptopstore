@@ -5,8 +5,10 @@
 
 {{-- content --}}
 @section('main-content')
-    <!--================ confirmation part start =================-->
-    <section class="confirmation_part padding_top">
+<!--================ confirmation part start =================-->
+<section class="confirmation_part padding_top">
+        <h2 class="text-center text-capitalize">Chi tiết đơn hàng ID: {{ $order->id }}</h2>
+
         <div class="container-fluid">
             <div class="row mx-auto">
                 <div class="col-lg-6 col-lx-12">

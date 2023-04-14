@@ -12,6 +12,13 @@
 {{-- content --}}
 @section('main-content')
     <div class="container-fluid mt-5 px-2">
+        {{-- notification if success --}}
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        
         <h2>Chỉnh sửa user &#127808;</h2>
         <div class="row mx-auto my-3 d-flex justify-content-between">
             <p class="w-auto">
@@ -30,8 +37,10 @@
             </div>
         @endif
         <!-- Display a form to add a new category -->
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="/users/{{ $user->id }}" method="POST" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
+
             <div class="row mx-auto d-flex flex-wrap justify-content-between">
                 <div class="form-group">
                     <label for="name">Tên hiển thị</label>
@@ -45,8 +54,8 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Mật khẩu</label>
-                    <input type="text" name="password" id="password" class="form-control" value="{{ $user->password }}"
-                        placeholder="Nhập mật khẩu" required>
+                    <input type="text" name="password" id="password" class="form-control" placeholder="Nhập mật khẩu">
+                    <span>*Bạn có thể bỏ qua nếu bạn không muốn đổi mật khẩu hiện tại</span>
                 </div>
                 <div class="form-group">
                     <label for="sdt">Số điện thoại</label>
@@ -61,7 +70,6 @@
                         <option value="nữ" @if ($user->gender == 'nữ') selected @endif>nữ</option>
                     </select>
                 </div>
-
                 <!-- Date -->
                 <div class="form-group">
                     <label>Ngày sinh:</label>
@@ -72,7 +80,8 @@
                 <div class="form-group">
                     <label>Avatar:</label>
                     <div class="input-group">
-                        <input type="file" name="image" class="form-control" accept="image/*" />
+                        <input type="file" name="image" id="img-upload" class="d-block form-control"
+                            accept="image/*" />
                     </div>
                     <img src="{{ asset($user->image) }}" style="max-width:150px" alt="img preview" id="img-preview">
                 </div>
@@ -87,10 +96,8 @@
             </button>
         </form>
 
-
         <a href="/users" class="d-inline-block btn btn-primary text-white w-auto mt-4 mb-3">&larr; Quản lý người dùng</a>
     </div>
 
-    {{-- <script src="{{ asset('js/category/create.js') }}"></script> --}}
-
+    <script src="{{ asset('js/user/create.js') }}"></script>
 @endsection

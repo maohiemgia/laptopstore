@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique()->comment('code of voucher');
             $table->boolean('type_voucher')->default(false)->comment('false: giảm %, true: giảm tiền');
-            $table->integer('value')->default(0);
-            $table->integer('max_des_value')->nullable()->comment('số tiền giảm tối đa');
+            $table->bigInteger('value')->default(0);
+            $table->bigInteger('max_des_value')->nullable()->comment('số tiền giảm tối đa');
             $table->string('description')->nullable();
             $table->integer('quantity')->default(1);
             $table->integer('count_use')->default(0);

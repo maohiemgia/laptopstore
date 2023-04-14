@@ -7,7 +7,9 @@ let optionpricesale = document.querySelector("#optionsale");
 let pricedisplay = document.querySelector("#pricedisplay");
 let itemQuantity = document.querySelector("#itemQuantity");
 
-if (productoptions.length) {
+if (productoptions && productoptions.length) {
+    document.getElementById('quantityzerodisplay').style.display = "none";
+
     let productid = productoptions[0].dataset.productid;
     let productitem = {};
     let productName, productImage;
@@ -29,6 +31,8 @@ if (productoptions.length) {
         .then((data) => {
             dataProduct = data;
             productitem = dataProduct.productoptions[0];
+            productitem.optionindex = productoptions[0].dataset.optionindex;
+
             productoptions[0].classList.add("active");
             productitem.cartquantity = itemQuantity.value;
 
@@ -38,6 +42,7 @@ if (productoptions.length) {
     productoptions.forEach((ele) => {
         ele.addEventListener("click", function (evt) {
             let optionid = evt.target.dataset.optionid;
+            let optionindex = evt.target.dataset.optionindex;
 
             productoptions.forEach((ele) => {
                 ele.classList.remove("active");
@@ -51,8 +56,16 @@ if (productoptions.length) {
 
                 if (optionitem.id == optionid) {
                     productitem = optionitem;
-
+                    productitem.optionindex = optionindex;
                     optionquantity.innerText = optionitem.quantity;
+                    document.getElementById('quantityzerodisplay').style.display = "none";
+                    document.getElementById('additemdisplay').classList.remove("hidden");
+
+                    if (optionitem.quantity < 1) {
+                        optionquantity.innerText = 'Hết hàng';
+                        document.getElementById('quantityzerodisplay').style.display = "block";
+                        document.getElementById('additemdisplay').className += ' hidden';
+                    }
 
                     pricedisplay.innerHTML =
                         `<span id="optionprice">` +
@@ -164,6 +177,24 @@ if (productoptions.length) {
         });
     });
 
+     // display add to cart notification
+     window.addEventListener('DOMContentLoaded', function() {
+        $(addtocartbtn).popover({
+            content: "Thêm vào giỏ hàng thành công!",
+            placement: "right",
+            trigger: "click",
+            container: "#addtocartbtn",
+        });
+
+        $(addtocartbtn).on('shown.bs.popover', function() {
+            updateDisplayCartLengthFunc();
+
+            setTimeout(function() {
+                $(addtocartbtn).popover('hide');
+            }, 2000);
+        });
+    });
+
     addtocartbtn.addEventListener("click", function () {
         let localCart = JSON.parse(localStorage.getItem("cart"));
         productitem.cartquantity = itemQuantity.value;
@@ -193,5 +224,7 @@ if (productoptions.length) {
 
             localCart = JSON.parse(localStorage.getItem("cart"));
         }
+
+        updateDisplayCartLengthFunc();
     });
 }
