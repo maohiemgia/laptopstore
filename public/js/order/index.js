@@ -10,12 +10,13 @@ function getID(){
     return id.get('id');
 }
 let table = document.querySelector("#table");
-getData().then((data) =>{
+let page = document.querySelector("#paginate");
+function render(data) {
     table.innerHTML = '';
-    data.forEach((item, index) =>{
+    data.data.forEach((item, index) =>{
             table.innerHTML += 
         `<tr class=" text-center">
-        <td  scope="col">${index++}</td>
+        <td  scope="col">${index+1}</td>
         <th  scope="col">${item.customer_name}</th>
         <th  scope="col">${item.customer_address}</th>
         <th  scope="col">${item.customer_phone_number}</th>
@@ -61,6 +62,25 @@ getData().then((data) =>{
                         document.querySelector("#detail").style.display = 'none';
                     })    
             })
+        })
+    })
+}
+getData().then((data) =>{
+    render(data);
+    data.links.forEach((item) => {
+        page.innerHTML += `
+            <li class="page-item">
+                <a class="page-link" aria-label="Previous">
+                <button aria-hidden="true" class="page" style="border: none; outline: none; background: #fff;">${item.label}</button>
+                </a>
+            </li>
+        `
+    })
+    document.querySelectorAll(".page").forEach((item) => {
+        item.addEventListener("click", () => {
+            getData(item.textContent).then((data) => {
+                render(data);
+            });
         })
     })
 });

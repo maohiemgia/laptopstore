@@ -16,7 +16,7 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        $orders = Order::orderBy('id', 'desc')->with('user')->get();
+        $orders = Order::orderBy('id', 'desc')->with('user')->paginate(5);
         if (preg_match("/api/", $request->url())) {
             return $orders;
         }

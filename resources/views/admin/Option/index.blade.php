@@ -51,7 +51,9 @@
         }
     </style>
 @endpush
-
+@section('style')
+    <link rel="stylesheet" href="{{ asset('css/admin/order.css') }}">
+@endsection
 {{-- content --}}
 @section('main-content')
     <div class="container-fluid mt-5 px-2 px-lg-5">
@@ -86,10 +88,16 @@
                 
             </tbody>
           </table>
+          <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+            <ul  id="paginate" class="pagination">
 
+            </ul>
+        </nav>
+        <div id="detail" class="row">
+        </div>
             
 
-        <a href="/" class="d-inline-block btn btn-primary text-white w-auto mt-2 mb-3">&larr; Trang chủ</a>
+        <a href="/dashboard" class="d-inline-block btn btn-primary text-white w-auto mt-2 mb-3">&larr; Trang chủ</a>
     </div>
 
     <script src="{{ asset('js/option/index.js') }}"></script>

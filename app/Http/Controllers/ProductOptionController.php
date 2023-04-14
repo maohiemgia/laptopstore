@@ -13,7 +13,7 @@ class ProductOptionController extends Controller
      */
     public function index(Request $request)
     {   
-        $options = ProductOption::with('product')->orderBy('id', 'desc')->get();
+        $options = ProductOption::with('product')->orderBy('id', 'desc')->paginate(5);
         $id = $request->id;
         if (preg_match("/api/", $request->url())) {
             return $options;

@@ -39,10 +39,14 @@
                 
             </tbody>
           </table>
-        <a href="/" class="d-inline-block btn btn-primary text-white w-auto mt-2 mb-3">&larr; Trang chủ</a>
+          <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+            <ul  id="paginate" class="pagination">
+
+            </ul>
+        </nav>
+        <a href="/dashboard" class="d-inline-block btn btn-primary text-white w-auto mt-2 mb-3">&larr; Trang chủ</a>
         <div id="detail" class="row">
         </div>
     </div>
-
     <script src="{{ asset('js/order/index.js') }}"></script>
 @endsection
