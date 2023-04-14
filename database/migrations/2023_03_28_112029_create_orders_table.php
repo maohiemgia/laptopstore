@@ -21,8 +21,8 @@ return new class extends Migration
             $table->integer('tax_fee')->default(0);
             $table->integer('shipping_fee')->default(0);
             $table->boolean('payment_type')->default(false)->comment('false: COD, true: online');
-            $table->integer('total_cost');
-            $table->integer('discount_value')->default(0)->nullable();
+            $table->bigInteger('total_cost');
+            $table->bigInteger('discount_value')->default(0)->nullable();
             $table->text('note')->nullable();
             $table->string('date_receive')->nullable()->comment('ngày nhận hàng');
             $table->integer('status')->default(1)->comment('0: canceled, 1: shipping, 2: completed');

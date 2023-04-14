@@ -141,17 +141,20 @@
             </div>
         </div>
         <div class="search_input" id="search_input_box">
-            <div class="container ">
-                <form class="d-flex justify-content-between search-inner">
-                    <input type="text" class="form-control" id="search_input" placeholder="Nhập tìm kiếm">
+            <div class="container">
+                <form class="d-flex justify-content-between search-inner" action="{{ route('product.search') }}">
+                    <input type="text" class="form-control" name="query" id="search_input" placeholder="Tìm kiếm sản phẩm khớp tên">
                     <button type="submit" class="btn"></button>
                     <span class="ti-close" id="close_search" title="Close Search"></span>
                 </form>
             </div>
         </div>
+        </div>
     </header>
     <!-- Header part end-->
-    @yield('main-content')
+    <div class="mt-4 mt-lg-0">
+        @yield('main-content')
+    </div>
 
     <!--::footer_part start::-->
     <footer class="footer_part">
@@ -163,8 +166,8 @@
                         <ul class="list-unstyled">
                             <li><a href="/">Trang chủ</a></li>
                             <li><a href="/product-list">Mua sắm</a></li>
-                            <li><a href="">Tra cứu đơn hàng</a></li>
-                            <li><a href="">Liên hệ</a></li>
+                            <li><a href="/find-order">Tra cứu đơn hàng</a></li>
+                            <li><a href="/contact">Liên hệ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -244,10 +247,6 @@
                 </div>
             </div>
         </div>
-        {{-- <button type="button" class="btn btn-secondary mx-auto d-block" id="addtocartnotification"
-             data-toggle="popover" data-placement="right">
-            Popover on right
-        </button> --}}
     </footer>
     <!--::footer_part end::-->
 
@@ -276,27 +275,7 @@
                 cartCountDisplay.innerText = localCart.length;
             }
         }
-
-        // display add to cart notification
-        window.addEventListener('DOMContentLoaded', function() {
-            updateDisplayCartLengthFunc();
-            let addtocartBtn = document.getElementById('addtocartbtn');
-
-            $(addtocartBtn).popover({
-                content: 'Thêm vào giỏ hàng thành công!',
-                placement: 'right',
-                trigger: 'click',
-                container: 'body'
-            });
-
-            $(addtocartBtn).on('shown.bs.popover', function() {
-                updateDisplayCartLengthFunc();
-
-                setTimeout(function() {
-                    $(addtocartBtn).popover('hide');
-                }, 2000);
-            });
-        });
+        updateDisplayCartLengthFunc();
 
         // clear all cart item
         function cartClear() {
@@ -304,7 +283,6 @@
 
             if (confirmDel) {
                 localStorage.removeItem('cart');
-                updateDisplayCartLengthFunc();
 
                 location.reload();
             }

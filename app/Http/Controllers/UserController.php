@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -35,13 +37,9 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //    // The incoming request is valid then...
-        // // Retrieve the validated input data...
-        // $validated = $request->validated();
-
-        $user = $request->all();
+        $user = $request->validated();
 
         if (!is_null($request->image)) {
             $imageUpload = $request->file('image');
@@ -51,14 +49,11 @@ class UserController extends Controller
             $request->image->move(public_path('images'), $imageName);
             $user['image'] = "images/" . $imageName;
         }
-        // hash password before save
-        $user['password'] = Hash::make($request->password);
 
-
+        $user['password'] = Hash::make($user['password']);
         User::create($user);
 
-
-        return redirect('/users')->with('success', "Tạo mới người dùng thành công");
+        return redirect('/users')->with('success', 'Tạo mới người dùng thành công');
     }
 
     /**
@@ -99,9 +94,13 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $request->updateUser($user);
+
+        return redirect()->back()->with('success', 'Cập nhật người dùng thành công.');
     }
 
     /**

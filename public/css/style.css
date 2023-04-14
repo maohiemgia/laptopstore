@@ -8,6 +8,11 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.hidden {
+    display: none !important;
+}
+
 /* line 2, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_extends.scss */
 .btn_2,
 .form-contact .form-group .btn_1 i {

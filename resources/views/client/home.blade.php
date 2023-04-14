@@ -98,7 +98,7 @@
                                             </h3>
                                         @endif
                                         <a class="add_cart text-center btn">
-                                           <i class="fas fa-search fa-lg" style="color: #e40d0d;"></i>
+                                            <i class="fas fa-search fa-lg" style="color: #e40d0d;"></i>
                                             Xem chi tiết
                                         </a>
                                     </div>
@@ -148,58 +148,38 @@
     <!-- awesome_shop part start-->
 
     <!-- product_list part start-->
-    {{-- <section class="product_list best_seller section_padding">
+    <section class="product_list best_seller">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="section_tittle text-center">
-                        <h2>Best Sellers <span>shop</span></h2>
+                        <h2>Sản phẩm Bán chạy</h2>
                     </div>
                 </div>
             </div>
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-12">
                     <div class="best_product_slider owl-carousel">
-                        <div class="single_product_item">
-                            <img src="img/product/product_1.png" alt="">
-                            <div class="single_product_text">
-                                <h4>Quartz Belt Watch</h4>
-                                <h3>$150.00</h3>
+                        @foreach ($bestseller as $item)
+                            <div class="single_product_item" onclick="location.href='/product-detail/{{ $item->id }}'">
+                                <img src="{{ asset($item->image) }}" alt="product">
+                                <div class="single_product_text">
+                                    <h4>{{ $item->name }}</h4>
+                                    <h3>
+                                        <span class="badge badge-success">
+                                            Đã bán {{ $item->total_sales }}
+                                        </span>
+                                    </h3>
+                                    <h3>{{ number_format($item->price, 0, ',', '.') }} đ</h3>
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="single_product_item">
-                            <img src="img/product/product_2.png" alt="">
-                            <div class="single_product_text">
-                                <h4>Quartz Belt Watch</h4>
-                                <h3>$150.00</h3>
-                            </div>
-                        </div>
-                        <div class="single_product_item">
-                            <img src="img/product/product_3.png" alt="">
-                            <div class="single_product_text">
-                                <h4>Quartz Belt Watch</h4>
-                                <h3>$150.00</h3>
-                            </div>
-                        </div>
-                        <div class="single_product_item">
-                            <img src="img/product/product_4.png" alt="">
-                            <div class="single_product_text">
-                                <h4>Quartz Belt Watch</h4>
-                                <h3>$150.00</h3>
-                            </div>
-                        </div>
-                        <div class="single_product_item">
-                            <img src="img/product/product_5.png" alt="">
-                            <div class="single_product_text">
-                                <h4>Quartz Belt Watch</h4>
-                                <h3>$150.00</h3>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
     <!-- product_list part end-->
 
     <!-- subscribe_area part start-->

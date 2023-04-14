@@ -1,7 +1,9 @@
 let imgUploadBtn = document.getElementById("img-upload");
 let imgPreview = document.getElementById("img-preview");
 
-imgPreview.style.display = "none";
+if (!imgPreview.src) {   
+    imgPreview.style.display = "none";
+}
 
 imgUploadBtn.addEventListener("change", function () {
     try {

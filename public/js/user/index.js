@@ -18,6 +18,14 @@ viewDetailBtns.forEach((ele) => {
 
                     return;
                 }
+                data.age = data.birthday ? data.age : "chưa cập nhật";
+                data.birthday = data.birthday ? data.birthday : "chưa cập nhật";
+                data.gender = data.gender ? data.gender : "chưa cập nhật";
+                data.phone_number = data.phone_number
+                    ? data.phone_number
+                    : "chưa cập nhật";
+                data.address = data.address ? data.address : "chưa cập nhật";
+
                 tableDisplayDetail.innerHTML += `
                          <h5>Tên: ${data.name}</h5>
                          <h5>Email: ${data.email}</h5>

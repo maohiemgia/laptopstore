@@ -121,7 +121,7 @@
                                     <a href="#"> <span>Có sẵn:</span>
                                         <span id="optionquantity" class="w-auto pr-2">
                                             {{ $product->productoptions->first()->quantity }}
-                                        </span>cái
+                                        </span>
                                     </a>
                                 </li>
                             @endif
@@ -131,9 +131,9 @@
                             <div class="product-option-section my-3">
                                 <span>Chọn cấu hình: </span>
                                 <ul class="list">
-                                    @foreach ($product->productoptions as $option)
+                                    @foreach ($product->productoptions as $index => $option)
                                         <li class="btn p-3 my-2 product-options" data-productid="{{ $product->id }}"
-                                            data-optionid="{{ $option->id }}">
+                                            data-optionid="{{ $option->id }}" data-optionindex={{ $index + 1 }}>
                                             <span class="d-inline-block">
                                                 <b>CPU:</b>
                                                 {{ $option->cpu }}
@@ -161,16 +161,21 @@
                                 <br>
                                 ✅ MIỄN PHÍ GIAO HÀNG TẬN NHÀ
                             </p>
-                            <div class="card_area d-flex justify-content-between align-items-center">
+                            <div class="card_area d-flex justify-content-between align-items-center" id="additemdisplay">
                                 <div class="product_count">
                                     <span class="inumber-decrement" style="cursor: pointer;"><i class="ti-minus"></i></span>
                                     <input class="input-number" id="itemQuantity" type="text" value="1"
                                         min="1">
                                     <span class="number-increment" style="cursor: pointer;"> <i class="ti-plus"></i></span>
                                 </div>
-                                <button class="btn_3" id="addtocartbtn" data-toggle="popover" data-placement="right">
+                                <button class="btn_3" id="addtocartbtn" data-toggle="popover" style="cursor: pointer;">
                                     Thêm vào giỏ
                                 </button>
+                            </div>
+                            <div>
+                                <p id="quantityzerodisplay" class="font-weight-bold h4">
+                                    Cần mua vui lòng liên hệ 0342.737.862
+                                </p>
                             </div>
                         @endif
                     </div>

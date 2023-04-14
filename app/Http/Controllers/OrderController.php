@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderConfirmation;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\ProductOption;
+use App\Models\Voucher;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
@@ -64,7 +68,7 @@ class OrderController extends Controller
 
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator);
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
         $order = new Order;
@@ -78,31 +82,54 @@ class OrderController extends Controller
         $order->note = $request->input('note');
         $order->discount_value = $request->input('discount_value');
 
-
         $order->save();
-
+        
         $order_details = [];
         foreach ($productOptions as $p) {
             $order_detail = [
                 'order_id' => $order->id,
                 'product_option_id' => $p['id'],
-                'product_detail' => $p['product_name'] . $p['cpu'] . $p['gpu'] . $p['ram'] . $p['memory'],
+                'product_detail' => "Tùy chọn: " . $p['optionindex'] . "(" . $p['product_name'] . $p['cpu'] . $p['gpu'] . $p['ram'] . $p['memory'] . ")",
                 'quantity' =>  $p['cartquantity'],
                 'price' =>  $p['price'] - $p['discount_value'],
             ];
             array_push($order_details, $order_detail);
         }
 
+        // save product detail to order detail then 
+        // product option quantity minus the quantity product has save in order detail
         foreach ($order_details as $ord) {
-            OrderDetail::create($ord);
+            $createOrderDetail = OrderDetail::create($ord);
+
+            // minus product option quantity
+            $option = ProductOption::find($createOrderDetail->product_option_id);
+            $option->quantity -= $createOrderDetail->quantity;
+            $option->save();
+        }
+
+        // handle voucher
+        if (session()->has('voucher')) {
+            $voucher = session()->get('voucher');
+
+            $getVoucher = Voucher::find($voucher);
+            $getVoucher->quantity--;
+            $getVoucher->count_use++;
+            $getVoucher->save();
+
+            session()->forget('voucher');
         }
 
         setcookie('productOptions', '', time() - 3600);
         session()->flush();
         session(['checkResult' => $request->input('customer_email')]);
 
+        $order = Order::with('orderdetails')->find($order->id);
 
-        return redirect('/order-result/' . $order->id);
+        $orderdata = $order->toArray();
+
+        Mail::to($order->customer_email)->send(new OrderConfirmation($orderdata));
+
+        return redirect('/order-result/' . $order->id)->with('success', 'Email chứa thông tin đơn hàng đã được gửi tới Mail của bạn!');
     }
 
     /**

@@ -15,9 +15,9 @@ class VouchersTableSeeder extends Seeder
     {
         DB::table('vouchers')->insert([
             [
-                'name' => 'menvn70',
-                'value' => 70,
-                'require_money' => 200000,
+                'name' => 'poly1000',
+                'value' => 1000000,
+                'require_money' => null,
                 'description' => 'Nhân ngày đàn ông Việt Nam, vì tôn vinh những đóng góp và hy sinh âm thầm của họ chúng tôi đã tạo mã giảm giá này!',
                 'quantity' => 50,
                 'count_use' => 0,
