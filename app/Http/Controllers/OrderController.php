@@ -83,7 +83,7 @@ class OrderController extends Controller
         $order->discount_value = $request->input('discount_value');
 
         $order->save();
-        
+
         $order_details = [];
         foreach ($productOptions as $p) {
             $order_detail = [
@@ -163,14 +163,17 @@ class OrderController extends Controller
             $errors = $validate->errors();
             return redirect()->back()->withErrors($errors);
         } else {
+            // update status
             $option = Order::find($request->id);
             $option->status = $request->status;
             $result = $option->save();
-            if ($result) {
-                return redirect('/orders')->with('success', "Cập nhật trạng thái đơn hàng thành công thành công");
-            } else {
-                return redirect('/orders')->with('success', 'Đã có lỗi xảy ra');
-            }
+
+            // send email
+            $orderquery = Order::with('orderdetails')->find($request->id);
+            $orderdata = $orderquery->toArray();
+            Mail::to($orderquery->customer_email)->send(new OrderConfirmation($orderdata));
+
+            return redirect('/orders')->with('success', "Cập nhật trạng thái đơn hàng thành công, Email chứa thông tin đơn hàng đã được gửi tới Mail của khách hàng!");
         }
     }
 

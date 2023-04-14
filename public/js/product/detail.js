@@ -243,6 +243,10 @@ if (productoptions && productoptions.length) {
                         Number(productitem.cartquantity) +
                         Number(itemincart.cartquantity);
 
+                    if (itemincart.cartquantity > itemincart.quantity) {
+                        itemincart.cartquantity = itemincart.quantity;
+                    }
+
                     localStorage.setItem("cart", JSON.stringify(localCart));
                     checkMatchItem++;
 
