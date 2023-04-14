@@ -21,9 +21,9 @@ class UsersTableSeeder extends Seeder
         // insert admin user
         DB::table('users')->insert([
             [
-                'email' => 'testadmin@gmail.com',
+                'email' => 'admin@admin.com',
                 'name' => 'adminDZ',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('admin123'),
                 'image' => '/images/admin_avt.jpg',
                 'phone_number' =>  '0342737862',
                 'address' => Str::limit($faker->address, 200),

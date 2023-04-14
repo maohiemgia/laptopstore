@@ -177,6 +177,29 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p class="text-capitalize">
+                            Quản lý mã giảm giá
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/vouchers" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p class="text-capitalize">Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/vouchers/create" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p class="text-capitalize">tạo mới</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
 
 

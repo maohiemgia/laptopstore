@@ -16,7 +16,7 @@ getData().then((data) =>{
         if(item.product_id == id){
             table.innerHTML += 
         `<tr class=" text-center">
-        <td  scope="col">${index++}</td>
+        <td  scope="col">${index+1}</td>
         <th  scope="col">${item.product.name}</th>
         <th  scope="col">${item.cpu}</th>
         <th  scope="col">${item.gpu}</th>
