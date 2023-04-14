@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
         // insert admin user
         DB::table('users')->insert([
             [
-                'email' => 'testadmin@admin.com',
+                'email' => 'testadmin@gmail.com',
                 'name' => 'adminDZ',
                 'password' => Hash::make('password'),
                 'image' => '/images/admin_avt.jpg',
