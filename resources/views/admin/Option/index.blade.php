@@ -89,7 +89,7 @@
 
             
 
-        <a href="/dashboard" class="d-inline-block btn btn-primary text-white w-auto mt-2 mb-3">&larr; Trang chủ</a>
+        <a href="/products" class="d-inline-block btn btn-primary text-white w-auto mt-2 mb-3">&larr; Trang chủ</a>
     </div>
 
     <script src="{{ asset('js/option/index.js') }}"></script>

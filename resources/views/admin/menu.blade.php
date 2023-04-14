@@ -37,6 +37,7 @@
                     {{ Auth::user()->name }}
                 </button>
                 <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/">{{ __('Giao diện khách') }}</a>
                     <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Quản lý tài khoản') }}</a>
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
@@ -71,21 +72,6 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-
-
-        <!-- SidebarSearch Form -->
-        <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                    aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -112,7 +98,7 @@
                         <li class="nav-item">
                             <a href="/users" class="nav-link">
                                 <p class="text-capitalize d-flex align-items-center">
-                                    <span class="fa-2x pl-4 pr-3">+</span> 
+                                    <span class="fa-2x pl-4 pr-3">+</span>
                                     Danh sách
                                 </p>
                             </a>
@@ -120,7 +106,7 @@
                         <li class="nav-item">
                             <a href="/users/create" class="nav-link">
                                 <p class="text-capitalize d-flex align-items-center">
-                                    <span class="fa-2x pl-4 pr-3">+</span> 
+                                    <span class="fa-2x pl-4 pr-3">+</span>
                                     tạo mới
                                 </p>
                             </a>
@@ -138,14 +124,18 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="/categories" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="text-capitalize">Danh sách</p>
+                                <p class="text-capitalize d-flex align-items-center">
+                                    <span class="fa-2x pl-4 pr-3">+</span>
+                                    Danh sách
+                                </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/categories/create" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="text-capitalize">tạo mới</p>
+                                <p class="text-capitalize d-flex align-items-center">
+                                    <span class="fa-2x pl-4 pr-3">+</span>
+                                    tạo mới
+                                </p>
                             </a>
                         </li>
                     </ul>
@@ -161,14 +151,18 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="/products" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="text-capitalize">Danh sách</p>
+                                <p class="text-capitalize d-flex align-items-center">
+                                    <span class="fa-2x pl-4 pr-3">+</span>
+                                    Danh sách
+                                </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/products/create" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="text-capitalize">tạo mới</p>
+                                <p class="text-capitalize d-flex align-items-center">
+                                    <span class="fa-2x pl-4 pr-3">+</span>
+                                    tạo mới
+                                </p>
                             </a>
                         </li>
                     </ul>
@@ -180,29 +174,6 @@
                             Quản lý đơn hàng
                         </p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p class="text-capitalize">
-                            Quản lý mã giảm giá
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/vouchers" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="text-capitalize">Danh sách</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/vouchers/create" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="text-capitalize">tạo mới</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
 
