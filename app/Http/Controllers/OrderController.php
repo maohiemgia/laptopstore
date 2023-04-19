@@ -10,6 +10,7 @@ use App\Models\ProductOption;
 use App\Models\Voucher;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -72,6 +73,7 @@ class OrderController extends Controller
         }
 
         $order = new Order;
+        $order->user_id = Auth::user()->id;
         $order->customer_name = $request->input('customer_name');
         $order->customer_email = $request->input('customer_email');
         $order->customer_address = $request->input('customer_address');
@@ -120,7 +122,7 @@ class OrderController extends Controller
         }
 
         setcookie('productOptions', '', time() - 3600);
-        session()->flush();
+        // session()->flush();
         session(['checkResult' => $request->input('customer_email')]);
 
         $order = Order::with('orderdetails')->find($order->id);

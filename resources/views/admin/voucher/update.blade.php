@@ -28,7 +28,7 @@
             <p class="w-auto">
                 Vui lòng nhập theo biểu mẫu bên dưới để cập nhật mã giảm giá.
             </p>
-            <a href="/vouchers/create" class="d-block btn btn-success text-white w-auto">Làm mới</a>
+            <button class="d-block btn btn-success w-auto" id="refresh"></button>
         </div>
         <!-- Display any validation errors -->
         @if ($errors->any())

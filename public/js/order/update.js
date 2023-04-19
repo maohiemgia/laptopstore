@@ -8,7 +8,6 @@ const getOrder = () => {
     const id = getId();
     return fetch("http://127.0.0.1:8000/api/orders/"+ id).then((response) => response.json())
     .then((data) => {
-        console.log(data[0].status);
         document.querySelector("#status").value = data[0].status;
     })
 }

@@ -28,6 +28,7 @@ function render(data){
     )
     document.querySelectorAll(".delete").forEach((item) => {
         item.addEventListener("click", () => {
+            if(confirm('Bạn có chắc chắn muốn xóa?')){
             url = `/vouchers/${item.dataset.id}`;
             $.ajax({
                 url: url,
@@ -40,6 +41,7 @@ function render(data){
                 }
             })
             location.reload();
+        }
         })
     })
     data.links.forEach((item) => {

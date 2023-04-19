@@ -113,4 +113,11 @@ class UserController extends Controller
 
         return redirect('/users')->with('success', 'Xóa người dùng thành công');
     }
+
+    public function ordermanager()
+    {
+        
+        
+        return view('client.user.ordermanager');
+    }
 }

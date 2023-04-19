@@ -15,6 +15,7 @@ const getVoucher = () => {
         document.querySelector("#date_expired").value = data.date_expired;
         document.querySelector("#description").innerHTML = data.description;
         document.querySelector("#status").value = data.status;
+        document.querySelector('#refresh').innerHTML = `<a href="/vouchers/${data.id}" class="text-white">Làm mới</a>`
     })
 }
 

@@ -8,14 +8,17 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{ $totalOrders }}</h3>
 
-                        <p>New Orders</p>
+                        <p>Đơn Hàng Đã Được Tạo</p>
+                        <p>
+                            {{ $totalProductOptionsSold }} sản phẩm đã được bán
+                        </p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/orders" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -23,14 +26,14 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+                        <h3>{{ $totalProducts }}<sup style="font-size: 20px"></sup></h3>
 
-                        <p>Bounce Rate</p>
+                        <p>Sản phẩm đang tồn tại</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/products" class="small-box-footer">Xem chi tiết<i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -38,18 +41,18 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>{{ $totalUsers }}</h3>
 
-                        <p>User Registrations</p>
+                        <p>Người dùng đã đăng ký</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/users" class="small-box-footer">Xem chi tiết<i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
+            {{-- <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
@@ -62,7 +65,7 @@
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-            </div>
+            </div> --}}
             <!-- ./col -->
         </div>
         <!-- /.row -->
@@ -70,7 +73,7 @@
         <div class="row">
             <!-- Left col -->
             <section class="col-lg-7 connectedSortable">
-                <!-- TABLE: LATEST ORDERS -->
+                {{-- <!-- TABLE: LATEST ORDERS -->
                 <div class="card">
                     <div class="card-header border-transparent">
                         <h3 class="card-title">Latest Orders</h3>
@@ -103,7 +106,7 @@
                                         <td><span class="badge badge-success">Shipped</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                               54</div>
+                                                54</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -112,7 +115,7 @@
                                         <td><span class="badge badge-warning">Pending</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                               54</div>
+                                                54</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -121,7 +124,7 @@
                                         <td><span class="badge badge-danger">Delivered</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f56954" data-height="20">
-                                               54</div>
+                                                54</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -130,7 +133,7 @@
                                         <td><span class="badge badge-info">Processing</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#00c0ef" data-height="20">
-                                               54</div>
+                                                54</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -139,7 +142,7 @@
                                         <td><span class="badge badge-warning">Pending</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                               54</div>
+                                                54</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -148,7 +151,7 @@
                                         <td><span class="badge badge-danger">Delivered</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f56954" data-height="20">
-                                               54</div>
+                                                54</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -157,7 +160,7 @@
                                         <td><span class="badge badge-success">Shipped</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                               54</div>
+                                                54</div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -173,7 +176,7 @@
                             Orders</a>
                     </div>
                     <!-- /.card-footer -->
-                </div>
+                </div> --}}
                 <!-- /.card -->
             </section>
             <!-- /.Left col -->
@@ -183,7 +186,7 @@
                 <!-- PRODUCT LIST -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Recently Added Products</h3>
+                        <h3 class="card-title">Sản phẩm mới thêm gần đây</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -194,69 +197,35 @@
                             </button>
                         </div>
                     </div>
+
                     <!-- /.card-header -->
                     <div class="card-body p-0">
                         <ul class="products-list product-list-in-card pl-2 pr-2">
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Samsung TV
-                                        <span class="badge badge-warning float-right">$1800</span></a>
-                                    <span class="product-description">
-                                        Samsung 32" 1080p 60Hz LED Smart HDTV.
-                                    </span>
-                                </div>
-                            </li>
-                            <!-- /.item -->
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Bicycle
-                                        <span class="badge badge-info float-right">$700</span></a>
-                                    <span class="product-description">
-                                        26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                                    </span>
-                                </div>
-                            </li>
-                            <!-- /.item -->
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">
-                                        Xbox One <span class="badge badge-danger float-right">
-                                            $350
-                                        </span>
-                                    </a>
-                                    <span class="product-description">
-                                        Xbox One Console Bundle with Halo Master Chief Collection.
-                                    </span>
-                                </div>
-                            </li>
-                            <!-- /.item -->
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">PlayStation 4
-                                        <span class="badge badge-success float-right">$399</span></a>
-                                    <span class="product-description">
-                                        PlayStation 4 500GB Console (PS4)
-                                    </span>
-                                </div>
-                            </li>
-                            <!-- /.item -->
+                            @foreach ($newproducts as $item)
+                                @if (isset($item->productoptions->first()->price))
+                                    <li class="item">
+                                        <div class="product-img">
+                                            <img src="{{ $item->image }}" alt="Product Image" class="img-size-50">
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="/product-detail/{{ $item->id }}" class="product-title">{{ $item->name }}
+                                                <span class="badge badge-warning float-right">
+                                                    {{ number_format($item->productoptions->first()->price, 0, ',', '.') }}
+                                                    đ
+                                                </span>
+                                            </a>
+                                            <span class="product-description">
+                                                Tùy Chọn 1
+                                            </span>
+                                        </div>
+                                    </li>
+                                @endif
+                            @endforeach
                         </ul>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer text-center">
-                        <a href="javascript:void(0)" class="uppercase">View All Products</a>
+                        <a href="/product-list" class="uppercase">Xem tất cả sản phẩm</a>
                     </div>
                     <!-- /.card-footer -->
                 </div>

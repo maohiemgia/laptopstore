@@ -49,7 +49,7 @@ function render(data) {
                     <h5 class="col-6">Payment method: ${data[0].payment_type}</h5>
                     <h5 class="col-6">Total: ${data[0].total_cost}</h5>
                     <h5 class="col-6">Discount: ${data[0].discount_value}</h5>
-                    <h5 class="col-6">Status: ${data[0].status}</h5>
+                    <h5 class="col-6">Status: ${data[0].status == 0 ? 'Đã hủy' : (data[0].status == 1 ? 'Đang giao hàng' : 'Đã giao hàng')}</h5>
                     <h5 class="col-12">Note: ${data[0].note}</h5>`
                     for (let i = 0; i < data[0].detail.length; i++) {
                         detail.innerHTML +=

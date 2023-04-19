@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Models\ProductOption;
 use App\Models\SubCategory;
+use App\Models\User;
 use App\Models\Voucher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -20,6 +22,22 @@ use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
+     // display homepage for admin manager
+     public function dashboard()
+     {
+          $totalOrders = Order::count();
+          $totalProductOptionsSold = OrderDetail::whereIn('order_id', function ($query) {
+               $query->select('id')
+                    ->from('orders')
+                    ->where('status', '=', 'completed');
+          })->sum('quantity');
+          $totalProducts = Product::count();
+          $totalUsers = User::count();
+
+          $newproducts = Product::with('productoptions')->orderBy('created_at', 'desc')->take(20)->get();
+
+          return view('admin.dashboard', compact('newproducts', 'totalOrders', 'totalProductOptionsSold', 'totalProducts', 'totalUsers'));
+     }
      /**
       * Display a listing of the resource.
       */
@@ -30,12 +48,12 @@ class HomeController extends Controller
           $newproducts = Product::with('productoptions')->orderBy('created_at', 'desc')->take(8)->get();
           $featureproducts = ProductOption::with('product')->orderBy('price', 'desc')->take(4)->get();
           $bestseller = Product::select('products.id', 'products.name', 'products.image', 'product_options.price', DB::raw('COUNT(order_details.product_option_id) as total_sales'))
-          ->join('product_options', 'products.id', '=', 'product_options.product_id')
-          ->join('order_details', 'product_options.id', '=', 'order_details.product_option_id')
-          ->whereNull('products.deleted_at')
-          ->groupBy('products.id', 'products.name', 'products.image', 'product_options.price')
-          ->orderByDesc('total_sales')
-          ->get();
+               ->join('product_options', 'products.id', '=', 'product_options.product_id')
+               ->join('order_details', 'product_options.id', '=', 'order_details.product_option_id')
+               ->whereNull('products.deleted_at')
+               ->groupBy('products.id', 'products.name', 'products.image', 'product_options.price')
+               ->orderByDesc('total_sales')
+               ->get();
 
           return view('client.home', compact('headerbanners', 'footerbanners', 'newproducts', 'featureproducts', 'bestseller'));
      }

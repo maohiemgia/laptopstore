@@ -37,7 +37,7 @@ class VoucherController extends Controller
         $validate = Validator::make($request->all(),[
             'name' => 'required',
             'value' => 'required|numeric',
-            'require_money' => 'required|numeric',
+            'require_money' => 'numeric',
             'date_expired' => 'required',
             'quantity' => 'required|numeric',
             'status' => 'required'

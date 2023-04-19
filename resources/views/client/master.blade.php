@@ -113,11 +113,16 @@
                                         {{ Auth::user()->name }}
                                     </button>
                                     <div class="dropdown-menu" style="width: 170px; left:-50px">
-                                        <a class="dropdown-item" href="/dashboard">
-                                            {{ __('Quản trị Web') }}
-                                        </a>
+                                        @if (isset(Auth::user()->role) && Auth::user()->role)
+                                            <a class="dropdown-item" href="/dashboard">
+                                                {{ __('Quản trị Web') }}
+                                            </a>
+                                        @endif
                                         <a class="dropdown-item" href="{{ route('profile.edit') }}">
                                             {{ __('Quản lý tài khoản') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('profile.ordermanager') }}">
+                                            {{ __('Quản lý đơn hàng') }}
                                         </a>
                                         <!-- Authentication -->
                                         <form method="POST" action="{{ route('logout') }}">
@@ -143,7 +148,8 @@
         <div class="search_input" id="search_input_box">
             <div class="container">
                 <form class="d-flex justify-content-between search-inner" action="{{ route('product.search') }}">
-                    <input type="text" class="form-control" name="query" id="search_input" placeholder="Tìm kiếm sản phẩm khớp tên">
+                    <input type="text" class="form-control" name="query" id="search_input"
+                        placeholder="Tìm kiếm sản phẩm khớp tên">
                     <button type="submit" class="btn"></button>
                     <span class="ti-close" id="close_search" title="Close Search"></span>
                 </form>

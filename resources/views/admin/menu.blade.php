@@ -9,7 +9,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link" data-widget="navbar-search" href="#" role="button">
                 <i class="fas fa-search"></i>
             </a>
@@ -29,7 +29,7 @@
                     </div>
                 </form>
             </div>
-        </li>
+        </li> --}}
         <!-- Sidebar user panel (optional) -->
         @if (isset(Auth::user()->name))
             <li class="nav-item dropdown px-3">
@@ -186,14 +186,18 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="/vouchers" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="text-capitalize">Danh sách</p>
+                                <p class="text-capitalize d-flex align-items-center">
+                                    <span class="fa-2x pl-4 pr-3">+</span>
+                                    Danh sách
+                                </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/vouchers/create" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="text-capitalize">tạo mới</p>
+                                <p class="text-capitalize d-flex align-items-center">
+                                    <span class="fa-2x pl-4 pr-3">+</span>
+                                    Tạo mới
+                                </p>
                             </a>
                         </li>
                     </ul>

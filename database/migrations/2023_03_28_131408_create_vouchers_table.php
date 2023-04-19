@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique()->comment('code of voucher');
             $table->bigInteger('value')->default(0);
-            $table->bigInteger('require_money')->nullable()->comment('Điều kiện áp dụng');
+            $table->bigInteger('require_money')->nullable()->default(0)->comment('Điều kiện áp dụng');
             $table->string('description')->nullable();
             $table->integer('quantity')->default(1);
             $table->integer('count_use')->default(0);

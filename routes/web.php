@@ -27,22 +27,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('client.home');
 Route::get('/product-list', [HomeController::class, 'products']);
 Route::get('/product-detail/{id}', [HomeController::class, 'productdetail']);
-Route::get('/checkout', [HomeController::class, 'checkout']);
+// Route::get('/checkout', [HomeController::class, 'checkout']);
+Route::get('/checkout', [HomeController::class, 'checkout'])->middleware(['auth', 'verified']);
 Route::post('/checkvoucher', [HomeController::class, 'checkvoucher']);
 Route::get('/order-result/{id}', [HomeController::class, 'orderresult']);
 Route::get('/find-order', [HomeController::class, 'findorder']);
 Route::post('/matchorder', [HomeController::class, 'matchorder']);
 Route::get('/contact', [HomeController::class, 'contact']);
 Route::get('/search', [HomeController::class, 'searchproduct'])->name('product.search');
+Route::get('/ordermanager', [UserController::class, 'ordermanager'])->name('profile.ordermanager');
 
 //dang làm rở
 Route::get('/filter', [HomeController::class, 'filter'])->name('product.filter');
 
 Route::post('/order/store', [OrderController::class, 'store']);
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified', 'checkRole'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware(['auth', 'verified', 'checkRole'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

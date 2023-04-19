@@ -38,8 +38,8 @@ function render(res) {
     )
     document.querySelectorAll(".delete").forEach((item) => {
         item.addEventListener("click", () => {
-            console.log(item.dataset.id);
-            url = `/option/${item.dataset.id}`;
+            if(confirm('Bạn có chắc chắn muốn xóa?')){
+                url = `/option/${item.dataset.id}`;
             $.ajax({
                 url: url,
                 method: 'DELETE',
@@ -51,6 +51,7 @@ function render(res) {
                 }
             })
             location.reload();
+            }
         })
     })
     document.querySelectorAll('.detail').forEach((item) => {
