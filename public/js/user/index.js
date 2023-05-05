@@ -1,3 +1,5 @@
+import { API_URL } from "../apiconfig.js";
+
 const tableDisplayDetail = document.querySelector("#table-display-detail");
 
 let viewDetailBtns = document.querySelectorAll(".classviewdetail");
@@ -10,7 +12,7 @@ viewDetailBtns.forEach((ele) => {
 
         tableDisplayDetail.innerHTML = "";
 
-        return fetch("http://127.0.0.1:8000/api/users/" + btnIdValue)
+        return fetch(API_URL + "users/" + btnIdValue)
             .then((response) => response.json())
             .then((data) => {
                 if (data.length == 0) {

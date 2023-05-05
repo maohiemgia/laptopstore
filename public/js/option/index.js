@@ -1,5 +1,7 @@
+import { API_URL } from "../apiconfig.js";
+
 const getData = (page) => {
-    return fetch('http://127.0.0.1:8000/api/option?page=' + page).then((response) => {
+    return fetch(API_URL + 'option?page=' + page).then((response) => {
         return response.json()
     })
 }
@@ -102,6 +104,6 @@ getData().then((res) => {
     })
 });
 const getDetail = (id) => {
-    return fetch('http://127.0.0.1:8000/api/option/' + id)
+    return fetch(API_URL+ 'option/' + id)
     .then((response) => response.json())
 }

@@ -1,5 +1,7 @@
+import { API_URL } from "../apiconfig.js";
+
 const getData = () => {
-    return fetch('http://127.0.0.1:8000/api/vouchers').then((response) => {
+    return fetch(API_URL + 'vouchers').then((response) => {
         return response.json()
     })
 }

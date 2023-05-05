@@ -72,5 +72,5 @@
         <a href="/products" class="d-inline-block btn btn-primary text-white w-auto mt-4 mb-3">&larr; Quản lý sản phẩm</a>
     </div>
 
-    <script src="{{ asset('js/product/update.js') }}"></script>
+    <script type="module"  src="{{ asset('js/product/update.js') }}"></script>
 @endsection

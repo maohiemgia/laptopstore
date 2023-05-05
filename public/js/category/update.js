@@ -1,3 +1,5 @@
+import { API_URL } from "../apiconfig.js";
+
 let divParentCate = document.getElementById("divParentCate");
 let selectParentCate = document.getElementById("selectParentCate");
 
@@ -6,7 +8,7 @@ if (divParentCate != null) {
     selectParentCate.innerHTML = `<option value="">Loading. . .</option>`;
 
     window.addEventListener("load", function () {
-        return fetch("http://127.0.0.1:8000/api/categories")
+        return fetch(API_URL + "categories")
             .then((response) => response.json())
             .then((data) => {
                 selectParentCate.innerHTML = "";

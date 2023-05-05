@@ -72,6 +72,6 @@
         <a href="/categories" class="d-inline-block btn btn-primary text-white w-auto mt-4 mb-3">&larr; Quản lý danh mục</a>
     </div>
 
-    <script src="{{ asset('js/category/update.js') }}"></script>
+    <script  type="module" src="{{ asset('js/category/update.js') }}"></script>
 
 @endsection

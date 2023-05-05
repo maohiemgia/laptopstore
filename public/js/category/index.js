@@ -1,3 +1,5 @@
+import { API_URL } from "../apiconfig.js";
+
 const categories = document.querySelector("#category");
 const tableDisplayDetail = document.querySelector("#table-display-detail");
 const tableDisplayDetailDeleted = document.querySelector(
@@ -25,7 +27,7 @@ viewDetailBtns.forEach((ele) => {
         tableDisplayDetail.innerHTML = "";
         tableDisplayDetailDeleted.innerHTML = "";
 
-        return fetch("http://127.0.0.1:8000/api/categories/" + btnIdValue)
+        return fetch(API_URL + "categories/" + btnIdValue)
             .then((response) => response.json())
             .then((data) => {
                 if (data.length == 0) {

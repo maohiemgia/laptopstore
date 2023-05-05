@@ -224,5 +224,5 @@
     <!--================End Product Description Area =================-->
 
 
-    <script src="{{ asset('/js/product/detail.js') }}"></script>
+    <script type="module" src="{{ asset('js/product/detail.js') }}"></script>
 @endsection

@@ -1,3 +1,5 @@
+import { API_URL } from "../apiconfig.js";
+
 const hasParentBtn = document.getElementById("hascategoryparent");
 let divParentCate = document.getElementById("divParentCate");
 let selectParentCate = document.getElementById("selectParentCate");
@@ -10,7 +12,7 @@ hasParentBtn.addEventListener("click", function () {
 
         selectParentCate.innerHTML = `<option value="">Loading. . .</option>`;
 
-        return fetch("http://127.0.0.1:8000/api/categories")
+        return fetch(API_URL + "categories")
             .then((response) => response.json())
             .then((data) => {
                 selectParentCate.innerHTML = "";

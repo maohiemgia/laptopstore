@@ -94,5 +94,5 @@
         <a href="/dashboard" class="d-inline-block btn btn-primary text-white w-auto mt-2 mb-3">&larr; Trang chủ</a>
     </div>
 
-    <script src="{{ asset('js/voucher/index.js') }}"></script>
+    <script type="module"  src="{{ asset('js/voucher/index.js') }}"></script>
 @endsection

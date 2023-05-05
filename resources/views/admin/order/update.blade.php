@@ -62,5 +62,5 @@
         </button>
     </div>
 
-    <script src="{{ asset('js/order/update.js') }}"></script>
+    <script type="module"  src="{{ asset('js/order/update.js') }}"></script>
 @endsection

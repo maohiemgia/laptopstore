@@ -86,6 +86,6 @@
         <a href="/vouchers" class="d-inline-block btn btn-primary text-white w-auto mt-4 mb-3">&larr; Quản lý mã giảm giá</a>
     </div>
 
-    <script src="{{ asset('js/voucher/update.js') }}"></script>
+    <script  type="module" src="{{ asset('js/voucher/update.js') }}"></script>
 @endsection
 

@@ -1,6 +1,8 @@
+import { API_URL } from "../apiconfig.js";
+
 const detail = document.querySelector("#detail");
 const getData = (page) => {
-    return fetch("http://127.0.0.1:8000/api/products?page=" + page).then((response) => {
+    return fetch(API_URL + "products?page=" + page).then((response) => {
         return response.json();
     });
 };
@@ -94,6 +96,6 @@ getData().then((data) => {
 });
 
 const getDetail = (id) => {
-    return fetch('http://127.0.0.1:8000/api/products/' + id)
+    return fetch(API_URL + 'products/' + id)
     .then((response) => response.json())
 }

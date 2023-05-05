@@ -1,8 +1,8 @@
+import { API_URL } from "../apiconfig.js";
+
 const categories = document.querySelector("#category");
 const getCategories = () => {
-    return fetch("http://127.0.0.1:8000/api/categories").then((response) =>
-        response.json()
-    );
+    return fetch(API_URL + "categories").then((response) => response.json());
 };
 
 getCategories().then((data) => {
@@ -16,9 +16,9 @@ getCategories().then((data) => {
 });
 
 categories.addEventListener("change", () => {
-    subCategories.innerHTML = '';
+    subCategories.innerHTML = "";
 
-    return fetch("http://127.0.0.1:8000/api/categories/" + categories.value)
+    return fetch(API_URL + "categories/" + categories.value)
         .then((response) => response.json())
         .then((data) => {
             data.forEach((item) => {

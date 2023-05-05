@@ -48,5 +48,5 @@
         <div id="detail" class="row">
         </div>
     </div>
-    <script src="{{ asset('js/order/index.js') }}"></script>
+    <script  type="module" src="{{ asset('js/order/index.js') }}"></script>
 @endsection

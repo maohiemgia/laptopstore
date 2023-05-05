@@ -103,5 +103,5 @@
         </button>
     </div>
 
-    <script src="{{ asset('js/option/update.js') }}"></script>
+    <script type="module"  src="{{ asset('js/option/update.js') }}"></script>
 @endsection

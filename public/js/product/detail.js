@@ -1,3 +1,5 @@
+import { API_URL } from "../apiconfig.js";
+
 let addtocartbtn = document.querySelector("#addtocartbtn");
 let productoptions = document.querySelectorAll(".product-options");
 let optioninfo = document.querySelector("#optioninfo");
@@ -13,9 +15,7 @@ if (productoptions && productoptions.length) {
     let productid = productoptions[0].dataset.productid;
     let productitem = {};
     let productName, productImage;
-    let productFetch = fetch(
-        "http://127.0.0.1:8000/api/product-detail/" + productid
-    )
+    let productFetch = fetch(API_URL + "product-detail/" + productid)
         .then((response) => response.json())
         .then((data) => {
             productName = data.name;
@@ -25,7 +25,7 @@ if (productoptions && productoptions.length) {
         });
     let dataProduct;
     let dataProductFetch = fetch(
-        "http://127.0.0.1:8000/api/product-detail/" + productid
+        API_URL + "product-detail/" + productid
     )
         .then((response) => response.json())
         .then((data) => {
