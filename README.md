@@ -1,8 +1,8 @@
-Hi! 
-Welcome to my first laravel project.
-Feel free to do anything with it.
+## Hi! 
+## Welcome to my first laravel project.
+## Feel free to do anything with it.
 
-## Database name: Typhoon Laptop Store Project
+## Project name: Typhoon Laptop Store Project
 
 ## Demo: https://phplaravel-1007637-3556010.cloudwaysapps.com
 
