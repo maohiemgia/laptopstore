@@ -84,10 +84,18 @@
                             <a href="/users/{{ $u->id }}" class="btn btn-warning text-white">Sửa</a>
 
                             @if ($u->role != 1)
-                                <button class="btn btn-danger" onclick="deleteConfirm('/users/{{ $u->id }}/delete')"
+                                {{-- <button class="btn btn-danger" onclick="deleteConfirm('/users/{{ $u->id }}/delete')"
                                     data-toggle="modal" data-target="#deleteconfirmmodal">
                                     Xóa
-                                </button>
+                                </button> --}}
+
+                                <form action="/users/{{ $u->id }}/delete" class="d-inline" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger" confirm-delete="true">
+                                        Xóa
+                                    </button>
+                                </form>
                             @endif
                         </td>
                     </tr>
@@ -102,6 +110,29 @@
     </div>
 
     <script type="module"  src="{{ asset('js/user/index.js') }}"></script>
-    <script src="{{ asset('js/components/deleteconfirm.js') }}"></script>
 
+    <script>
+        // Add event listener to all buttons with data-confirm-delete attribute
+        const deleteButtons = document.querySelectorAll('[confirm-delete="true"]');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                Swal.fire({
+                    title: 'Xác thực xóa',
+                    text: 'Bạn chắc chắn muốn xóa không?',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Xóa',
+                    cancelButtonText: 'Hủy',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Submit the form
+                        event.target.closest('form').submit();
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

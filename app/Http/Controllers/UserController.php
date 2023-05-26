@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Order;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -22,6 +24,9 @@ class UserController extends Controller
         if (preg_match("/api/", $request->url())) {
             return $users;
         }
+      
+        confirmDelete();
+        // alert()->success('thành công rồi', 'thông báo okok');
 
         return view('admin.user.index', compact('users'));
     }
@@ -116,8 +121,8 @@ class UserController extends Controller
 
     public function ordermanager()
     {
+        $orders = Order::where('user_id', Auth::user()->id)->get();
         
-        
-        return view('client.user.ordermanager');
+        return view('client.user.ordermanager', compact('orders'));
     }
 }

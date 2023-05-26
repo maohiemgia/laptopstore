@@ -39,6 +39,8 @@
 </head>
 
 <body style="position: relative;">
+    @include('sweetalert::alert')
+
     <!--::header part start::-->
     <header class="main_menu home_menu position-fixed sticky-top bg-white w-100" id="navbar">
         <div class="container">
@@ -201,17 +203,27 @@
                         <p>
                             Đăng ký để nhận thông báo và mã giảm giá từ chúng tôi cho các sự kiện sắp tới qua email.
                         </p>
-                        <div id="mc_embed_signup">
-                            <form target="_blank"
-                                action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                method="get" class="subscribe_form relative mail_part">
-                                <input type="email" name="email" id="newsletter-form-email"
+                        <div>
+                            <form action="{{ route('client.email.follow') }}" method="post"
+                                class="subscribe_form relative mail_part">
+                                @method('POST')
+                                @csrf
+                                <input type="email" name="emailfollow" id="newsletter-form-email"
                                     placeholder="Địa chỉ email" class="placeholder hide-on-focus"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = ' Email Address '">
-                                <button type="submit" name="submit" id="newsletter-submit"
-                                    class="email_icon newsletter-submit button-contactForm">Theo dõi</button>
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = ' Địa chỉ email '"
+                                    value="{{ old('emailfollow') }}">
+                                <button type="submit" name="submit"
+                                    class="email_icon newsletter-submit button-contactForm">
+                                    Theo dõi
+                                </button>
                                 <div class="mt-10 info"></div>
                             </form>
+                            
+                            @error('emailfollow')
+                                <span class="alert-danger text-danger p-2">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -232,20 +244,19 @@
                         <div class="footer_icon social_icon">
                             <ul class="list-unstyled">
                                 <li>
-                                    <a href="fb.com/nvantuan99" class="single_social_icon"><i
-                                            class="fab fa-facebook-f"></i></a>
+                                    <a href="fb.com/nvantuan99" class="single_social_icon">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="fb.com/nvantuan99" class="single_social_icon"><i
-                                            class="fab fa-twitter"></i></a>
+                                    <a href="fb.com/nvantuan99" class="single_social_icon">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="fb.com/nvantuan99" class="single_social_icon"><i
-                                            class="fas fa-globe"></i></a>
-                                </li>
-                                <li>
-                                    <a href="fb.com/nvantuan99" class="single_social_icon"><i
-                                            class="fab fa-behance"></i></a>
+                                    <a href="tel:0342737862" class="single_social_icon">
+                                        <i class="fas fa-phone"></i>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -330,7 +341,7 @@
     <script src="{{ asset('js/masonry.pkgd.js') }}"></script>
     <!-- particles js -->
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script> --}}
     <!-- slick js -->
     <script src="{{ asset('js/slick.min.js') }}"></script>
     <script src="{{ asset('js/jquery.counterup.min.js') }}"></script>

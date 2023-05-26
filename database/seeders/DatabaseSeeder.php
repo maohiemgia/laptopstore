@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             VouchersTableSeeder::class,
             OrdersTableSeeder::class,
             OrderDetailsTableSeeder::class,
-            BannersTableSeeder::class
+            BannersTableSeeder::class,
+            FollowersTableSeeder::class
         ]);
     }
 }

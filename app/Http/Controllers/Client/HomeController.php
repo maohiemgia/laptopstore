@@ -7,6 +7,7 @@ use App\Mail\OrderConfirmation;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Banner;
 use App\Models\Category;
+use App\Models\Follower;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
@@ -339,5 +340,35 @@ class HomeController extends Controller
                ->get();
 
           return view('client.product.index', compact('newproducts', 'featureproducts', 'categories', 'bestseller'));
+     }
+
+     public function follow(Request $request)
+     {
+          // Validate the email field
+          $validator = Validator::make(
+               $request->all(),
+               [
+                    'emailfollow' => 'required|email',
+               ],
+               [
+                    'emailfollow.required' => 'Bạn quên chưa nhập email kìa!',
+                    'emailfollow.email' => 'Bạn nhập email không hợp lệ rồi!',
+               ]
+          );
+
+          if ($validator->fails()) {
+               // Validation failed
+               return redirect()->back()->withErrors($validator)->withInput();
+          }
+
+          // Validation passed, continue with your logic
+          $email = $request->input('emailfollow');
+
+          Follower::create([
+               'email' => $email,
+          ]);
+          Alert()->success('Thành công', 'Đăng ký nhận email thông báo ưu đãi thành công');
+
+          return redirect()->back();
      }
 }

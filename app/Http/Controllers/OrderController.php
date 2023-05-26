@@ -130,7 +130,8 @@ class OrderController extends Controller
         $orderdata = $order->toArray();
 
         Mail::to($order->customer_email)->send(new OrderConfirmation($orderdata));
-
+        Alert()->success('Thành công', 'Đặt hàng thành công');
+        
         return redirect('/order-result/' . $order->id)->with('success', 'Email chứa thông tin đơn hàng đã được gửi tới Mail của bạn!');
     }
 

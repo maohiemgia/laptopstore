@@ -35,7 +35,7 @@ Route::get('/find-order', [HomeController::class, 'findorder']);
 Route::post('/matchorder', [HomeController::class, 'matchorder']);
 Route::get('/contact', [HomeController::class, 'contact']);
 Route::get('/search', [HomeController::class, 'searchproduct'])->name('product.search');
-Route::get('/ordermanager', [UserController::class, 'ordermanager'])->name('profile.ordermanager');
+Route::get('/ordermanager', [UserController::class, 'ordermanager'])->name('profile.ordermanager')->middleware(['auth', 'verified']);
 
 //dang làm rở
 Route::get('/filter', [HomeController::class, 'filter'])->name('product.filter');
@@ -124,3 +124,5 @@ Route::middleware(['auth', 'verified', 'checkRole'])->prefix('vouchers')->group(
     Route::delete('{id}', [VoucherController::class, 'destroy']);
     Route::put('{id}/restore', [VoucherController::class, 'restore']);
 });
+
+Route::post('/emailfollow', [HomeController::class, 'follow'])->name('client.email.follow');

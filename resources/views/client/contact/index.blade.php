@@ -20,14 +20,18 @@
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                         <div class="media-body">
-                            <h3>0342 737 862</h3>
-                            <p>Thứ 2 tới thứ 7 từ 8 giờ sáng tới 10 giờ tối</p>
+                            <h3>
+                                <a href="tel:0342737862" class="text-dark">
+                                    0342 737 862
+                                </a>
+                            </h3>
+                            <p>8 giờ sáng tới 10 giờ tối hằng ngày</p>
                         </div>
                     </div>
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-email"></i></span>
                         <div class="media-body">
-                            <h3>tuannvph19078@fpt.edu.vn</h3>
+                            <h3>vantuan.webdev@gmail.com</h3>
                             <p>Gửi email cho tôi bất cứ khi nào!</p>
                         </div>
                     </div>
